@@ -11,14 +11,15 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
   <body>
-    <div>
+    <header>
       <h1>Have oodles of fun with Schoodle!</h1>
-      <h2>The smartest, functional event planner you'll find at Lighthouse.</h2>
+      <h2>Lighthouse's smartest, functional event planner.</h2>
+    </header>
+    <div>
       <form action="/event-proposal-form">
-      <input type="text" placeholder="What's the occasion?" name="Event"><br>
+      <input type="text" placeholder="What's the occasion?" required="required" maxlength="64">
       <input type="submit" value="Create event">
       </form>
-
     </div>
   </body>
 </html>
