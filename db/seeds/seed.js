@@ -1,5 +1,6 @@
 exports.seed = function (knex, Promise) {
-  return knex('event_dates').del()
+  return knex('user_event_availability').del()
+    .then(() => knex('event_dates').del())
     .then(() => knex('events').del())
     .then(() => knex('users').del())
     .then(() => {
@@ -37,6 +38,7 @@ exports.seed = function (knex, Promise) {
     })
     .then(([red, green, blue]) => {
       return knex('event_dates')
+        .returning('id')
         .insert([
           {
             id: 1,
@@ -50,10 +52,29 @@ exports.seed = function (knex, Promise) {
           },
           {
             id: 3,
-            date: '2017-01-22',
+            date: '2017-03-22',
             event_id: blue
           }
         ])
     })
-    .then(() => console.log("deleted4"))
+    .then(([jan, feb, mar]) => {
+      return knex('user_event_availability')
+        .insert([
+          {
+            event_date_id: jan,
+            attendee_id: 1,
+            event_date_response: true
+          },
+          {
+            event_date_id: feb,
+            attendee_id: 2,
+            event_date_response: true
+          },
+          {
+            event_date_id: jan,
+            attendee_id: 3,
+            event_date_response: false
+          }
+        ])
+    })
 };
