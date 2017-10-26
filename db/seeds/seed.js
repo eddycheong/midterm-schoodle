@@ -1,5 +1,6 @@
 exports.seed = function (knex, Promise) {
-  return knex('events').del()
+  return knex('event_dates').del()
+    .then(() => knex('events').del())
     .then(() => knex('users').del())
     .then(() => {
       return knex('users')
@@ -12,9 +13,10 @@ exports.seed = function (knex, Promise) {
     })
     .then(([alice, bob, charlie]) => {
       return knex('events')
+        .returning('hash_id')
         .insert([
           {
-            hash_id: '0cc175b9c0f1b6a831c399e269772661',
+            hash_id: '60b725f10c9c85c70d97880dfe8191b3',
             title: 'red',
             description: 'Color of red',
             organizer_id: alice
@@ -32,6 +34,26 @@ exports.seed = function (knex, Promise) {
             organizer_id: bob
           }
         ])
-      // Generate Events
     })
+    .then(([red, green, blue]) => {
+      return knex('event_dates')
+        .insert([
+          {
+            id: 1,
+            date: '2017-01-08',
+            event_id: red
+          },
+          {
+            id: 2,
+            date: '2017-02-08',
+            event_id: red
+          },
+          {
+            id: 3,
+            date: '2017-01-22',
+            event_id: blue
+          }
+        ])
+    })
+    .then(() => console.log("deleted4"))
 };
