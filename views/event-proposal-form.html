@@ -1,9 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title></title>
-</head>
-<body>
+<<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home Page</title>
 
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+
+<body>
+  <center>
+  <h1>Choose your dates !!!</h1>
+
+  <form action="/register" method='POST'>
+    <p>
+      <input type='name' placeholder="Name" required="required" name='name'/>
+      <input type='email' placeholder="email" required="required" name='email'/>
+    </p>
+    <p>
+      <textarea name='description' rows="10" cols="40" maxlength="500">
+      <input type='description' placeholder="Please, enter with your event's description here"></textarea>
+    </p>
+    <p><button type='submit'>Submit</button></p>
+  </form>
+</center>
 </body>
 </html>
