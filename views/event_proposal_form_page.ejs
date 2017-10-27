@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Create Your Event</title>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <header>
+      <% include ./partials/_header %>
+    </header>
+
+    <center>
+      <h1>What's the occasion?</h1>
+      <div>
+        <form class="proposedEventName">
+          <input type="text" value="" id="d-pollTitle" placeholder="Enter title" required="required" maxlength="64">
+          </form>
+      </div>
+      <div>
+        <form class="proposedEventDescription">
+          <textarea id="d-pollDescription" rows="1" placeholder="Add note" maxlength="512" style="overflow: hidden; word-wrap: break-word; height: 19px;"></textarea>
+        </form>
+      </div>
+
+      <h1>Choose your dates!</h1>
+      <label for='date'>Date of Event</label><br>
+      <form class="proposedEventDates">
+        <input name='date' id='date' type='date'><br><br>
+      </form>
+
+      <h1>Let your guests know who you are!</h1>
+      <div class="form-group">
+        <form class="organizerName">
+          <input type="text" value="" id="d-initiatorName" placeholder="Name" required="required" maxlength="64">
+        </form>
+      </div>
+      <div class="form-group">
+        <form class="email">
+          <input type="email" value="" id="d-initiatorEmail" placeholder="Email" required="required" maxlength="128">
+        </form>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </center>
+
+    <footer>
+      <% include ./partials/_footer %>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>

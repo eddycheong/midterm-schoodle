@@ -29,6 +29,18 @@ body {
   font-size: 200%;
   line-height: 80px;
   }
+  .container {
+    position: fixed;
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
+    float: left;
+    bottom: 0;
+  }
+  .container span {
+  font-size: 100%;
+  line-height: 60px;
+  }
 }
 
 
