@@ -19,26 +19,36 @@
     </header>
 
     <center>
-      <form>
-        <h1>What's the occasion?</h1>
-        <div>
+      <h1>What's the occasion?</h1>
+      <div>
+        <form class="proposedEventName">
           <input type="text" value="" id="d-pollTitle" placeholder="Enter title" required="required" maxlength="64">
-        </div>
-        <div>
+          </form>
+      </div>
+      <div>
+        <form class="proposedEventDescription">
           <textarea id="d-pollDescription" rows="1" placeholder="Add note" maxlength="512" style="overflow: hidden; word-wrap: break-word; height: 19px;"></textarea>
-        </div>
-        <h1>Choose your dates!</h1>
-        <label for='date'>Date of Event</label><br>
+        </form>
+      </div>
+
+      <h1>Choose your dates!</h1>
+      <label for='date'>Date of Event</label><br>
+      <form class="proposedEventDates">
         <input name='date' id='date' type='date'><br><br>
-         <h1>Let your guests know who you are!</h1>
-        <div class="form-group">
-          <input type="text" value="" id="d-initiatorName" placeholder="Name" required="required" maxlength="64">
-        </div>
-        <div class="form-group">
-          <input type="email" value="" id="d-initiatorEmail" placeholder="Email" required="required" maxlength="128">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+
+      <h1>Let your guests know who you are!</h1>
+      <div class="form-group">
+        <form class="organizerName">
+          <input type="text" value="" id="d-initiatorName" placeholder="Name" required="required" maxlength="64">
+        </form>
+      </div>
+      <div class="form-group">
+        <form class="email">
+          <input type="email" value="" id="d-initiatorEmail" placeholder="Email" required="required" maxlength="128">
+        </form>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </center>
 
     <footer>
