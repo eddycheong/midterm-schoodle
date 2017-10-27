@@ -12,6 +12,7 @@ router.get("/", (req, res) => {
 
 // event proposal form page
 router.get("/create", (req, res) => {
+  
   res.render("event_proposal_form_page");
 });
 
@@ -29,6 +30,13 @@ router.get("/events/:hash", (req, res) => {
 
 // event proposal form page
 router.post("/events", (req, res) => {
+  const organizerName = request.body.organizerName.trim();      
+  const email = request.body.email.trim();
+  const proposedEventName = request.body.proposedEventName.trim();
+  const proposedEventDates =  request.body.proposedEventDates.trim();
+  const proposedEventDescription = request.body.proposedEventDescription.trim();
+  // const user_id = request.session.user_id; 
+
   res.redirect("/events/:hash/share");
 });
 
@@ -36,10 +44,20 @@ router.post("/events", (req, res) => {
 
 // add new attendee
 router.post("api/v1/events/:hash/attendees", (req, res) => {
+  const attendeeName = request.body.attendeeName.trim();      
+  const attendeeEmail = request.body.attendeeEmail.trim();
+  const attendeeEventDatesResponse =  request.body.attendeeEventDatesResponse.trim();
+    //conditional in case fields missing: ajax
+
 });
 
 // alter current session attendee
 router.put("api/v1/events/:hash/attendees/:id", (req, res) => {
+  const attendeeName = request.body.attendeeName.trim();      
+  const attendeeEmail = request.body.attendeeEmail.trim();
+  const attendeeEventDatesResponse =  request.body.attendeeEventDatesResponse.trim();
+  
+  //conditional in case only one thing changes: ajax
 });
 
 
