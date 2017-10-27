@@ -106,15 +106,35 @@ exports.seed = function (knex, Promise) {
             event_date_response: true
           },
           {
-            event_date_id: eventDateOpts[2],
+            event_date_id: eventDateOpts[0],
             attendee_id: 2,
             event_date_response: true
           },
           {
-            event_date_id: eventDateOpts[3],
+            event_date_id: eventDateOpts[1],
             attendee_id: 2,
             event_date_response: true
           },          
+          {
+            event_date_id: eventDateOpts[0],
+            attendee_id: 3,
+            event_date_response: false
+          },
+          {
+            event_date_id: eventDateOpts[1],
+            attendee_id: 3,
+            event_date_response: false
+          },
+          {
+            event_date_id: eventDateOpts[2],
+            attendee_id: 3,
+            event_date_response: false
+          },
+          {
+            event_date_id: eventDateOpts[3],
+            attendee_id: 3,
+            event_date_response: false
+          },
           {
             event_date_id: eventDateOpts[4],
             attendee_id: 3,
@@ -123,25 +143,10 @@ exports.seed = function (knex, Promise) {
           {
             event_date_id: eventDateOpts[5],
             attendee_id: 3,
-            event_date_response: false
-          },
-          {
-            event_date_id: eventDateOpts[6],
-            attendee_id: 3,
-            event_date_response: false
-          },
-          {
-            event_date_id: eventDateOpts[7],
-            attendee_id: 3,
-            event_date_response: false
-          },
-          {
-            event_date_id: eventDateOpts[8],
-            attendee_id: 3,
             event_date_response: true
           },
           {
-            event_date_id: eventDateOpts[9],
+            event_date_id: eventDateOpts[6],
             attendee_id: 3,
             event_date_response: true
           }
