@@ -12,7 +12,6 @@ router.get("/", (req, res) => {
 
 // event proposal form page
 router.get("/create", (req, res) => {
-  
   res.render("event_proposal_form_page");
 });
 
@@ -33,11 +32,16 @@ router.post("/events", (req, res) => {
   const organizerName = request.body.organizerName.trim();      
   const email = request.body.email.trim();
   const proposedEventName = request.body.proposedEventName.trim();
-  const proposedEventDates =  request.body.proposedEventDates.trim();
+  const proposedEventDates =  request.body.proposedEventDates;
   const proposedEventDescription = request.body.proposedEventDescription.trim();
+
+  if (!organizerName || !email || !proposedEventName || !proposedEventDates || !proposedEventDescription) {
+    res.status(303);
+  } else {
+    res.redirect("/events/:hash/share");    
+  }
   // const user_id = request.session.user_id; 
 
-  res.redirect("/events/:hash/share");
 });
 
 // // DATABASE PUT/POST QUERIES
@@ -46,18 +50,23 @@ router.post("/events", (req, res) => {
 router.post("api/v1/events/:hash/attendees", (req, res) => {
   const attendeeName = request.body.attendeeName.trim();      
   const attendeeEmail = request.body.attendeeEmail.trim();
-  const attendeeEventDatesResponse =  request.body.attendeeEventDatesResponse.trim();
-    //conditional in case fields missing: ajax
+  const attendeeEventDatesResponse =  request.body.attendeeEventDatesResponse;
 
+  if (!attendeeName || !attendeeEmail ) {
+    res.status(303);    
+  } else {
+    redirect("/api/v1/events/:hash/attendees");
+  }
 });
 
 // alter current session attendee
 router.put("api/v1/events/:hash/attendees/:id", (req, res) => {
   const attendeeName = request.body.attendeeName.trim();      
-  const attendeeEmail = request.body.attendeeEmail.trim();
-  const attendeeEventDatesResponse =  request.body.attendeeEventDatesResponse.trim();
+  const attendeeEventDatesResponse =  request.body.attendeeEventDatesResponse;
   
-  //conditional in case only one thing changes: ajax
+  if (!attendeeEventDatesResponse) {
+     attendeeEventDatesResponse = false;  
+  }
 });
 
 
