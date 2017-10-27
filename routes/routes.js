@@ -41,7 +41,6 @@ router.post("/events", (req, res) => {
     res.redirect("/events/:hash/share");    
   }
   // const user_id = request.session.user_id; 
-
 });
 
 // // DATABASE PUT/POST QUERIES

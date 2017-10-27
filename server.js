@@ -13,6 +13,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const shortid     = require('shortid');
 
 // Seperated Routes for each Resource
 const routes = require("./routes/routes");
@@ -33,7 +34,12 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
+
 app.use(express.static("public"));
+
+// make hash's URL safe
+shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
+
 
 // Mount all resource routes
 app.use("/", routes); //(knex)
