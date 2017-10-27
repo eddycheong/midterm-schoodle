@@ -24,5 +24,15 @@ body {
   body #nav-bar .header {
     font-size: 200%;
     line-height: 80px; }
+  body .container {
+    position: fixed;
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
+    float: left;
+    bottom: 0; }
+  body .container span {
+    font-size: 100%;
+    line-height: 60px; }
 
 /*# sourceMappingURL=layout.css.map */

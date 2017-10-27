@@ -14,24 +14,27 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
 
   </head>
+
   <body>
+    <header>
+      <% include ./partials/_header %>
+    </header>
     <main>
       <div class="jumbotron">
         <h1 class="display-3">Welcome to Schoodle!</h1>
         <center>
-        <p class="lead">The smartest, functional event planner you'll find at lighthouse labs.</p>
-        <hr class="my-4">
-        <p class="lead">
-          <a class="btn btn-primary btn-lg" href="event-form.ejs" role="button">Create Schoodle Event</a>
-        </p>
+          <p class="lead">The smartest, functional event planner you'll find at lighthouse labs.</p>
+          <hr class="my-4">
+          <p class="lead">
+            <a class="btn btn-primary btn-lg" href="event-form.ejs" role="button">Create Schoodle Event</a>
+          </p>
         </center>
       </div>
     </main>
 
-
-  <nav id="nav-bar">
-    <span class="header">Schoodle</span>
-  </nav>
+    <footer>
+      <% include ./partials/_footer %>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
