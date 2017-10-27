@@ -7,9 +7,9 @@ exports.seed = function (knex, Promise) {
       return knex('users')
         .returning('id')
         .insert([
-          { id: 1, name: 'Alice', email: 'alice@alice.alice' },
-          { id: 2, name: 'Bob', email: 'bob@bob.bob' },
-          { id: 3, name: 'Charlie', email: 'charlie@charlie.charlie' }
+          {name: 'Alice', email: 'alice@alice.alice' },
+          {name: 'Bob', email: 'bob@bob.bob' },
+          {name: 'Charlie', email: 'charlie@charlie.charlie' }
         ]);
     })
     .then(([alice, bob, charlie]) => {
@@ -41,113 +41,108 @@ exports.seed = function (knex, Promise) {
         .returning('id')
         .insert([
           {
-            id: 1,
             date: '2017-01-01',
             event_id: full
           },
           {
-            id: 2,
             date: '2017-01-02',
             event_id: full
           },
           {
-            id: 3,
             date: '2017-04-04',
             event_id: one
           },
           {
-            id: 4,
             date: '2017-04-05',
             event_id: one
           },
           {
-            id: 5,
             date: '2017-04-09',
             event_id: one
           },
           {
-            id: 6,
             date: '2017-04-10',
             event_id: one
           },
           {
-            id: 7,
             date: '2017-04-11',
             event_id: one
           },
           {
-            id: 8,
             date: '2017-02-20',
             event_id: empty
           },
           {
-            id: 9,
             date: '2017-02-22',
             event_id: empty
           },
           {
-            id: 10,
             date: '2017-02-27',
             event_id: empty
           }
         ])
     })
     .then(eventDateOpts => {
+      const attendees = knex('users');
+      return Promise.all([eventDateOpts, attendees]);
+    })
+    .then(([eventDateOpts, attendees]) => {
+      const attendeeIds = attendees.map(attendee => attendee.id);
       return knex('user_event_availability')
         .insert([
           {
             event_date_id: eventDateOpts[0],
-            attendee_id: 1,
+            attendee_id: attendeeIds[0],
             event_date_response: false
           },
           {
             event_date_id: eventDateOpts[1],
-            attendee_id: 1,
+            attendee_id: attendeeIds[0],
             event_date_response: true
           },
           {
             event_date_id: eventDateOpts[0],
-            attendee_id: 2,
+            attendee_id: attendeeIds[1],
             event_date_response: true
           },
           {
             event_date_id: eventDateOpts[1],
-            attendee_id: 2,
+            attendee_id: attendeeIds[1],
             event_date_response: true
           },          
           {
             event_date_id: eventDateOpts[0],
-            attendee_id: 3,
+            attendee_id: attendeeIds[2],
             event_date_response: false
           },
           {
             event_date_id: eventDateOpts[1],
-            attendee_id: 3,
+            attendee_id: attendeeIds[2],
             event_date_response: false
           },
           {
             event_date_id: eventDateOpts[2],
-            attendee_id: 3,
+            attendee_id: attendeeIds[2],
             event_date_response: false
           },
           {
             event_date_id: eventDateOpts[3],
-            attendee_id: 3,
+            attendee_id: attendeeIds[2],
             event_date_response: false
           },
           {
             event_date_id: eventDateOpts[4],
-            attendee_id: 3,
+            attendee_id: attendeeIds[2],
             event_date_response: false
           },
           {
             event_date_id: eventDateOpts[5],
-            attendee_id: 3,
+            attendee_id: attendeeIds[2],
             event_date_response: true
           },
           {
             event_date_id: eventDateOpts[6],
-            attendee_id: 3,
+            attendee_id: attendeeIds[2],
             event_date_response: true
           }
         ])
