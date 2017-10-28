@@ -48,5 +48,12 @@ body {
     font-size: 24px; }
   body #see-event {
     width: 200px; }
+  body .jumbotron {
+    background-color: #EEE; }
+  body .lead {
+    padding-bottom: 40px; }
+  body #create-schoodle {
+    width: 300px;
+    font-size: 30px; }
 
 /*# sourceMappingURL=layout.css.map */
