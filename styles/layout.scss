@@ -103,11 +103,11 @@ body {
   #create-schoodle:hover {
     background-color: #9B5094
   }
-  #proposal {
+  #SubmitBtn {
     width: 160px;
     font-size: 24px
   }
-  #proposal:hover {
+  #SubmitBtn:hover {
     background-color: #9B5094
   }
   input:hover {
@@ -121,7 +121,7 @@ body {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
   }
-  #proposal:active {
+  #SubmitBtn:active {
   background-color: #666699;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
