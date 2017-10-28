@@ -39,6 +39,8 @@ body {
     text-align: center; }
   body .form-section-table {
     width: 70%; }
+  body #attendee-input {
+    width: 35%; }
   body #nav-bar {
     position: fixed;
     height: 80px;
@@ -106,6 +108,8 @@ body {
     transform: translateY(4px); }
   body #attendee-form-submit-button:hover {
     background-color: #9B5094; }
+  body #attendee-form-submit-button {
+    padding: 1px 12px; }
   body #attendee-form-submit-button:active {
     background-color: #666699;
     box-shadow: 0 5px #666;

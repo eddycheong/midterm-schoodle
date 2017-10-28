@@ -54,6 +54,10 @@ form.form-group.row {
   .form-section-table {
     width: 70%;
   }
+
+  #attendee-input {
+    width: 35%;
+  }
   
   #nav-bar {
     position: fixed;
@@ -144,6 +148,11 @@ form.form-group.row {
   #attendee-form-submit-button:hover {
     background-color: #9B5094
   }
+
+  #attendee-form-submit-button {
+    padding: 1px 12px;
+  }
+
   #attendee-form-submit-button:active {
     background-color: #666699;
     box-shadow: 0 5px #666;
