@@ -86,5 +86,17 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
   body textarea:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  body #create-schoodle:active {
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px); }
+  body #proposal:active {
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px); }
+  body #see-event:active {
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px); }
 
 /*# sourceMappingURL=layout.css.map */
