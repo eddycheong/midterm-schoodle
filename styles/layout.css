@@ -38,5 +38,15 @@ body {
   body .container span {
     font-size: 100%;
     line-height: 60px; }
+  body #share {
+    padding-top: 40px; }
+  body #witness {
+    padding-top: 40px; }
+  body #your-link {
+    font-size: 24px; }
+  body #event-page {
+    font-size: 24px; }
+  body #see-event {
+    width: 200px; }
 
 /*# sourceMappingURL=layout.css.map */
