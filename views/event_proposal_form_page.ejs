@@ -37,8 +37,13 @@
             data: formInfo,
             success: function(result){
               const urlHash = result.result;
-              const results = result;
-              console.log("I am the result: " + result);
+              const organizerName = result.organizerName;
+              const email = result.email;
+              const proposedEventName = result.proposedEventName;
+              const proposedEventDates = result.proposedEventDates;
+              const proposedEventDescription = result.proposedEventDescription;  
+
+              console.log("I am the result: " + organizerName, email, proposedEventName, proposedEventDates, proposedEventDescription);
               window.location = `http://localhost:8080/events/${urlHash}/share`;   //for redirection
             },
             error: function(error){
