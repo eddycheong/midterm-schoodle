@@ -21,27 +21,15 @@ router.get("/create", (req, res) => {
 });
 
 // event link share page
-router.get("/events/:hash/share", (req, res) => {
+router.get("/events/:hash/share", (req, res) => { //:hash 
   res.render("share_link_page");
 });
 
 // event proposal display page
-router.get("/events/60b725f10c9c85c70d97880dfe8191b3", (req, res) => {
-
-  const organizer = eventHelpers(knex).getEventOrganizer("60b725f10c9c85c70d97880dfe8191b3");
-  const attendees = eventHelpers(knex).getEventAttendees("60b725f10c9c85c70d97880dfe8191b3");
-
-  Promise.all([organizer, attendees])
-    .then(([organizer, attendees]) => {
-      res.locals.organizer = organizer[0].name;
-      res.locals.attendees = attendees;
-      res.json(res.locals);
-      // res.render("event_proposal_display_page");
-    })
-
-
-  //get attendees 
+router.get("/events/:hash", (req, res) => { 
+res.render("event_proposal_display_page")
 });
+
 
 // // POST FORM
 
