@@ -30,30 +30,33 @@
   
 <main>     
   <center>
+
    <h2>Choose your event dates!</h2>
+
 <div class="col-auto">
     <form class="form-group row">
-      <table id="table" class="table table-bordered">
+
+      <table id="form-section-table" class="table table-bordered">
         <thead>
-          <th>Participants</th>
+          <th class="proposal-display-table-headers">Participants</th>
           <th>Oct. 26</th>
           <th>Oct. 27</th>
           <th>Oct. 28</th>
         </thead>
         <tbody>
-        <tr>
-          <td>Isaiah</td>
-          <td><input type="checkbox"></td>
-          <td><input type="checkbox"></td>
-          <td><input type="checkbox"></td>
-        </tr>
-
+          <tr>
+            <!-- <td id="input-for-user-name" class="proposal-display-table-attendee-name">Isaiah</td> -->
+            <td><input type="text" name="attendeeName" placeholder="Name: " required="required" maxlength="64"></td>
+            <td class="proposal-display-table-checkbox"><input type="checkbox"></td>
+            <td class="proposal-display-table-checkbox"><input type="checkbox"></td>
+            <td class="proposal-display-table-checkbox"><input type="checkbox"></td>
+          </tr>
         <button type="submit" method="POST" class="btn btn-primary">Submit</button>
       </form>
 
         <tr>
           <input type="hidden" value="10">
-          <td>Marcus</td>
+          <td class="proposal-display-table-attendee-name">Marcus</td>
           <td><input type="checkbox" name="cb_u_10_d_1"></td>
           <td><input type="checkbox" name="cb_u_10_d_2"></td>
           <td><input type="checkbox" name="cb_u_10_d_3"></td>
