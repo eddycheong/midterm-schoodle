@@ -28,30 +28,27 @@
         console.log("document loaded");
         $('#SubmitBtn').click(function() {
 
-          var tempData = {
-            id:"100",
-            name:"Mel"
-          };
-
-          alert("hi");
+          const formInfo = $('.eventDetails').serializeArray();
 
           $.ajax({
             method: 'POST',
             url: '/events',
             dataType: 'JSON',
-            data: tempData,
+            data: formInfo,
             success: function(result){
               const urlHash = result.result;
-              console.log(urlHash);
+              const results = result;
+              console.log("I am the result: " + result);
               window.location = `http://localhost:8080/events/${urlHash}/share`;   //for redirection
             },
             error: function(error){
               console.log("Some error "+ error);
             }
           }); //end of the AJAX Call here.
-        });
 
-      }); //main function ends;
+        });  // #SubmitBtn end
+
+      }); //main function ends
 
 
       </script>
