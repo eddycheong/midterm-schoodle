@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const eventHelpers = require('../lib/event-helpers.js');
+const eventHelper = require('../lib/event-helpers.js');
 
 const ENV         = process.env.ENV || "development";
 const knexConfig  = require("../knexfile");
@@ -21,13 +21,37 @@ router.get("/create", (req, res) => {
 });
 
 // event link share page
-router.get("/events/:hash/share", (req, res) => { //:hash 
+router.get("/events/:hash/share", (req, res) => {
+
+  // First, validate if hash is valid, if not, send error
+  res.locals.sickness = req.params.hash;
   res.render("share_link_page");
 });
 
 // event proposal display page
 router.get("/events/:hash", (req, res) => { 
-res.render("event_proposal_display_page")
+  const eventID = req.params.hash,
+        db = eventHelper(knex);
+
+  const eventInformation = [
+    db.getEventSummary(eventID),
+    db.getEventOrganizer(eventID),
+    db.getEventDateOptions(eventID),
+    db.getEventAttendees(eventID),
+    db.getEventAttendees(eventID)
+    .then(attendees => {
+      const attendeeResponses = attendees.map(attendee => {
+        return db.getEventAttendeeResponses(eventID, attendee.id);
+      });
+
+      return Promise.all(attendeeResponses);
+    })
+  ];
+
+  Promise.all(eventInformation)
+    .then(data => {
+      res.render("event_proposal_display_page")
+    });
 });
 
 
@@ -51,16 +75,30 @@ router.post("/events", (req, res) => {
 
 // // DATABASE PUT/POST QUERIES
 
-// add new attendee
-router.post("api/v1/events/:hash/attendees", (req, res) => {
-  const attendeeName = request.body.attendeeName.trim();      
-  const attendeeEmail = request.body.attendeeEmail.trim();
-  const attendeeEventDatesResponse =  request.body.attendeeEventDatesResponse;
+// add a new attendee their responses
+router.post("/api/v1/events/:hash/attendees", (req, res) => {
+  const eventID = req.params.hash;
+  const {attendeeName, attendeeEmail} = req.body;
+
+  // const attendeeEventDatesResponse =  req.body.attendeeEventDatesResponse;
+
 
   if (!attendeeName || !attendeeEmail ) {
-    res.status(303);    
+    console.log("I'm in here!")
+    res.sendStatus(400);    
   } else {
-    redirect("/api/v1/events/:hash/attendees");
+    const newUser = {
+      name: attendeeName,
+      email: attendeeEmail
+    };
+
+    eventHelper(knex).createUser(newUser)
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch(()=> {
+      res.sendStatus(500);
+    });
   }
 });
 
