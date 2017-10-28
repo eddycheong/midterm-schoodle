@@ -1,73 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Event Poll</title>
+  <title>Schoodle</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
+  
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-  <!-- CSS -->
+  <!-- CSS Main-->
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
+  
 
-  <link rel="stylesheet" href="../styles/layout_poll.css" type="text/css"/>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
+  
 
 </head>
 
 <body>
 
+    <header>
+        <% include ./partials/_header %>
+      </header>
+  
+<main>     
   <center>
-   <h1>Choose dates !!!</h1>
+   <h2>Choose your event dates!</h2>
+<div class="col-auto">
+    <form class="form-group row">
+      <table id="table" class="table table-bordered">
+        <thead>
+          <th>Participants</th>
+          <th>Oct. 26</th>
+          <th>Oct. 27</th>
+          <th>Oct. 28</th>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Isaiah</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
 
-  <table id="tabela" class="table table-striped">
-    <thead>
-      <th>Participants</th>
-      <th>Oct. 26</th>
-      <th>Oct. 27</th>
-      <th>Oct. 28</th>
-      <th>Oct. 29</th>
-      <th>Oct. 30</th>
-    </thead>
-    <tbody>
-    <tr>
-      <td>Isaiah</td>
-      <td><input type="checkbox"></td>
-      <td><input type="checkbox"></td>
-      <td><input type="checkbox"></td>
-      <td><input type="checkbox"></td>
-      <td><input type="checkbox"></td>
-    </tr>
-    <tr>
-      <form>
-        <input type="hidden" value="10">
-        <td>Marcus</td>
-        <td><input type="checkbox" name="cb_u_10_d_1"></td>
-        <td><input type="checkbox" name="cb_u_10_d_2"></td>
-        <td><input type="checkbox" name="cb_u_10_d_3"></td>
+        <button type="submit" method="POST" class="btn btn-primary">Submit</button>
       </form>
-    </tr>
-    <tr>
-      <td>Mel</td>
-      <td><input type="checkbox"></td>
-      <td><input type="checkbox"></td>
-      <td><input type="checkbox"></td>
-      <td><input type="checkbox"></td>
-      <td><input type="checkbox"></td>
-    </tr>
-    <tr>
-      <td>Eddy</td>
-      <td><input type="checkbox"></td>
-      <td><input type="checkbox"></td>
-      <td><input type="checkbox"></td>
-      <td><input type="checkbox"></td>
-      <td><input type="checkbox"></td>
-    </tr>
-  </tbody>
-  </table>
 
-   <p><button type='submit'>Submit</button></p>
+        <tr>
+          <input type="hidden" value="10">
+          <td>Marcus</td>
+          <td><input type="checkbox" name="cb_u_10_d_1"></td>
+          <td><input type="checkbox" name="cb_u_10_d_2"></td>
+          <td><input type="checkbox" name="cb_u_10_d_3"></td>
+        </tr>
+      </tbody>
+      </table>
+
+</div>
+</main>
+
+<footer>
+    <% include ./partials/_footer %>
+</footer>
+
   </center>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -1,7 +1,9 @@
 body {
   background-color: #EEE;
+  font-family: 'Cuprum', sans-serif;
   main {
     padding-top: 80px;
+    font-family: 'Cuprum', sans-serif;    
   }
   h1 {
     color: #244751;
@@ -9,10 +11,11 @@ body {
     font-style: italic;
     margin: 0 auto;
     text-align: center;
+    font-family: ‘Nunito’, sans-serif;    
   }
   h2 {
     color: #244751;
-    font-size: 20;
+    font-size: 30;
     margin: 0 auto;
     text-align: center;
   }
@@ -40,9 +43,6 @@ body {
   .container span {
   font-size: 100%;
   line-height: 60px;
-  }
-  .form {
-    padding-top: 80px;
   }
 }
 

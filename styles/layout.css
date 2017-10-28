@@ -1,16 +1,20 @@
+@charset "UTF-8";
 body {
-  background-color: #EEE; }
+  background-color: #EEE;
+  font-family: 'Cuprum', sans-serif; }
   body main {
-    padding-top: 80px; }
+    padding-top: 80px;
+    font-family: 'Cuprum', sans-serif; }
   body h1 {
     color: #244751;
     font-size: 40;
     font-style: italic;
     margin: 0 auto;
-    text-align: center; }
+    text-align: center;
+    font-family: ‘Nunito’, sans-serif; }
   body h2 {
     color: #244751;
-    font-size: 20;
+    font-size: 30;
     margin: 0 auto;
     text-align: center; }
   body #nav-bar {
@@ -34,7 +38,5 @@ body {
   body .container span {
     font-size: 100%;
     line-height: 60px; }
-  body .form {
-    padding-top: 80px; }
 
 /*# sourceMappingURL=layout.css.map */
