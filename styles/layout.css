@@ -56,10 +56,12 @@ body {
     max-width: 680px;
     padding: 0 15px;
     float: left;
-    bottom: 0; }
+    bottom: 0;
+    opacity: 0.5; }
   body .container span {
     font-size: 100%;
-    line-height: 60px; }
+    line-height: 60px;
+    color: #1B1817; }
   body #share {
     padding-top: 40px; }
   body #witness {
@@ -99,6 +101,12 @@ body {
     box-shadow: 0 5px #666;
     transform: translateY(4px); }
   body #see-event:active {
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px); }
+  body #attendee-form-submit-button:hover {
+    background-color: #9B5094; }
+  body #attendee-form-submit-button:active {
     background-color: #666699;
     box-shadow: 0 5px #666;
     transform: translateY(4px); }

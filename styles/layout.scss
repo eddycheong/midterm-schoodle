@@ -75,10 +75,12 @@ form.form-group.row {
     padding: 0 15px;
     float: left;
     bottom: 0;
+    opacity: 0.5;
   }
   .container span {
     font-size: 100%;
     line-height: 60px;
+    color: #1B1817;
   }
   #share {
     padding-top: 40px;
@@ -125,19 +127,27 @@ form.form-group.row {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   #create-schoodle:active {
-  background-color: #666699;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
   }
   #SubmitBtn:active {
-  background-color: #666699;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
   }
   #see-event:active {
-  background-color: #666699;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  #attendee-form-submit-button:hover {
+    background-color: #9B5094
+  }
+  #attendee-form-submit-button:active {
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
   }
 }
 
