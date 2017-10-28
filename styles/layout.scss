@@ -24,6 +24,10 @@ body {
       text-shadow: 1px 0px 20px #69DDFF;
 }
 
+form.form-group.row {
+  padding: 10px 50px;
+}
+
 @keyframes shake {
   10%, 90% {
     transform: translate3d(-1px, 0, 0);
@@ -47,6 +51,10 @@ body {
     margin: 0 auto;
     text-align: center;
   }
+  .form-section-table {
+    width: 70%;
+  }
+  
   #nav-bar {
     position: fixed;
     height: 80px;

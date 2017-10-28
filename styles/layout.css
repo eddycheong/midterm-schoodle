@@ -21,6 +21,8 @@ body {
     -webkit-stroke-color: #FFFFFF;
     -webkit-fill-color: #FFFFFF;
     text-shadow: 1px 0px 20px #69DDFF; }
+  body form.form-group.row {
+    padding: 10px 50px; }
 @keyframes shake {
   10%, 90% {
     transform: translate3d(-1px, 0, 0); }
@@ -35,6 +37,8 @@ body {
     font-size: 30;
     margin: 0 auto;
     text-align: center; }
+  body .form-section-table {
+    width: 70%; }
   body #nav-bar {
     position: fixed;
     height: 80px;
