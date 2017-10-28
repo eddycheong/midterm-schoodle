@@ -6,30 +6,37 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href=“https://fonts.googleapis.com/css?family=Changa|Nunito” rel=“stylesheet”>
+    <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">    
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../styles/layout.css" type="text/css"/>
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
+
   </head>
 
   <body>
     <header>
       <% include ./partials/_header %>
     </header>
-    <center>
-      <div class="jumbotron">
-      <h1>Share your event!</h1>
-      <form>
-      <label for="link">Your link:</label>
-      <input id="link" type="text" placeholder="http://www.gupmusic.com/" style="width: 300px">
-      </form>
-    <h3>See your event!</h3>
-    <a class="btn btn-primary btn-lg" href="event-poll.ejs" role="button">Click here!</a>
-    </div>
-    </center>
+
+    <main>
+
+      <center>
+        <h2>Share your event!</h2>
+        
+        <form>
+          <label for="link">Your link:</label>
+          <input id="link" type="text" placeholder="http://www.gupmusic.com/" style="width: 300px">
+          <a class="btn btn-primary btn-lg" method="GET" href="/events/:hash" role="button">See Your Event!</a>          
+        </form>
+      <h3>See your event!</h3>
+
+      
+
+      </center>
+  </main>
 
     <footer>
       <% include ./partials/_footer %>

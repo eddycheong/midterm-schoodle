@@ -8,57 +8,54 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link href=“https://fonts.googleapis.com/css?family=Changa|Nunito” rel=“stylesheet”>
+      <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
+      
 
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
       <!-- CSS -->
-      <link rel="stylesheet" href="../styles/layout.css" type="text/css"/>
-  </head>
+      <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
+    </head>
 
   <body>
     <header>
       <% include ./partials/_header %>
     </header>
 
-    <center class="form">
-    <div class="jumbotron">
-      <h1>What's the occasion?</h1>
-      <div>
-        <label for='title'>Give your event a title!</label><br>
-        <form class="proposedEventName">
-          <input type="text" value="" id="d-pollTitle" placeholder="Enter title" required="required" maxlength="64">
-          </form>
-      </div>
+    <main>
 
-      <div>
-        <label for='description'>Give your event a brief discription.</label><br>
-        <form class="proposedEventDescription">
-          <textarea id="d-pollDescription" rows="1" cols="25" placeholder="Add note" maxlength="512"></textarea>
-        </form>
-      </div>
+      <center class="form">
 
-      <h1>When does it take place?</h1>
-      <label for='date'>Pick some possible dates for your event.</label><br>
-      <form class="proposedEventDates">
-        <input name='date' id='date' type='date'><br><br>
+        <h2>Provide Your Event Details!</h2>
+
+      <form class="eventDetails">
+        <div>
+          <label for='title'>Title:</label><br>
+            <input type="text" name="proposedEventName" id="d-pollTitle" placeholder="My best party..." required="required" maxlength="64">
+        </div>
+
+        <div>
+          <label for='description'>Description:</label><br>
+            <textarea id="d-pollDescription" rows="1" cols="25" placeholder="Balloons provided!" maxlength="512"></textarea>
+        </div>
+
+        <label for='date'>Pick your possible dates!</label><br>
+          <input name='date' id='date' type='date'><br><br>
+        
+        <div class="form-group">
+            <input type="text" name="organizerName" id="d-initiatorName" placeholder="My name" required="required" maxlength="64">
+        </div>
+
+        <div class="form-group">
+            <input type="email" value="" id="d-initiatorEmail" placeholder="My email" required="required" maxlength="128">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-      
-      <h1>Let your guests know who you are!</h1>
-      <div class="form-group">
-        <form class="organizerName">
-          <input type="text" value="" id="d-initiatorName" placeholder="Name" required="required" maxlength="64">
-        </form>
-      </div>
-      <div class="form-group">
-        <form class="email">
-          <input type="email" value="" id="d-initiatorEmail" placeholder="Email" required="required" maxlength="128">
-        </form>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </center>
+      </center>
+
+  </main>
+
 
     <footer>
       <% include ./partials/_footer %>
