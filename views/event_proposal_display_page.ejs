@@ -8,17 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
   <script src="https://use.fontawesome.com/d33c8fb29b.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/scripts/create-attendee.js" ></script>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
   <!-- CSS Main-->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
-  
+
 
   <!-- CSS -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
-  
+
 
 </head>
 
@@ -27,14 +30,14 @@
     <header>
         <% include ./partials/_header %>
       </header>
-  
-<main>     
+
+<main>
   <center>
 
    <h2>Choose your event dates!</h2>
 
 <div class="col-auto">
-    <form class="form-group row">
+    <form class="form-group row" method="POST" action="/api/v1/events/60b725f10c9c85c70d97880dfe8191b3/attendees">
 
       <table id="form-section-table" class="table table-bordered">
         <thead>
@@ -51,7 +54,7 @@
             <td class="proposal-display-table-checkbox"><input type="checkbox"></td>
           </tr>
         <button type="submit" method="POST" id="attendee-form-submit-button"class="btn btn-primary">Submit</button>
-      </form>
+    </form>
 
         <tr class="display-table-row">
           <input type="hidden" value="10">
