@@ -10,18 +10,49 @@ $(() => {
   // };
 
   function getNameAndRender() {
-    $('form').on('submit', function(event) {
-        event.preventDefault();
+    $('form').on('submit', function (event) {
+      event.preventDefault();
 
-        const route = $(this).attr("action");
-        
-        $.ajax({
-          method: 'POST',
-          url: route,
-          data: $(this).serialize()
-        })
-        .done(response => {
-          console.log(response);
+      const route = $(this).attr("action");
+
+      const newAttendee = $(this);
+
+      $.ajax({
+        method: 'POST',
+        url: route,
+        data: newAttendee.serialize()
+      })
+        .done(() => {
+          $(".proposal-display-table-checkbox")
+            .closest('.display-table-row')
+            .css('display', 'none');
+
+          const newRow = {};
+
+          newAttendee.serializeArray().forEach(elem => {
+            if (elem.name === "attendeeName") {
+              newRow["attendeeName"] = elem.value;
+            }
+          });
+
+          const name = $("<td>")
+            .addClass("proposal-display-table-attendee-name")
+            .text(newRow.attendeeName);
+
+          const response = () => {
+            return $("<td>")
+            .append(
+              $("<i>").addClass("fa fa-check")
+            )
+          }
+
+          const row = $("<tr>").addClass("display-table-row")
+            .append(name)
+
+          for(let i=0; i<3; i++){
+            row.append(response());
+          }
+          $("tbody").append(row);
         });
     });
   }
@@ -35,6 +66,6 @@ $(() => {
   //     // });
   //   });
 
-    getNameAndRender();
+  getNameAndRender();
 });
 
