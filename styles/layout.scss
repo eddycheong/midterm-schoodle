@@ -13,6 +13,34 @@ body {
     text-align: center;
     font-family: ‘Nunito’, sans-serif;
   }
+  h1:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-stroke-width: 5.3px;
+      -webkit-stroke-color: #FFFFFF;
+      -webkit-fill-color: #FFFFFF;
+      text-shadow: 1px 0px 20px #69DDFF;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
   h2 {
     color: #244751;
     font-size: 30;
@@ -59,6 +87,9 @@ body {
   #see-event {
     width: 200px
   }
+  #see-event:hover {
+    background-color: #9B5094
+  }
   .jumbotron {
     background-color: #EEE
   }
@@ -69,9 +100,15 @@ body {
     width: 300px;
     font-size: 30px;
   }
+  #create-schoodle:hover {
+    background-color: #9B5094
+  }
   #proposal {
     width: 160px;
     font-size: 24px
+  }
+  #proposal:hover {
+    background-color: #9B5094
   }
 }
 
