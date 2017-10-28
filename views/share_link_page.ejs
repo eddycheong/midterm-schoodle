@@ -12,15 +12,24 @@
   </head>
 
   <body>
-    <h1><center>Share your event!<center></h1>
-    <form action="/xxx" method="xxxxx">
-      <center>
-        <label for="link">Your link:</label>
-        <input id="link" type="text" placeholder="http://www.gupmusic.com/" style="width: 300px">
-      <center>
-    </form>
-    <h3><center>See your event!<center></h3>
+    <header>
+      <% include ./partials/_header %>
+    </header>
+    <center>
+      <div class="jumbotron">
+      <h1>Share your event!</h1>
+      <form>
+      <label for="link">Your link:</label>
+      <input id="link" type="text" placeholder="http://www.gupmusic.com/" style="width: 300px">
+      </form>
+    <h3>See your event!</h3>
     <a class="btn btn-primary btn-lg" href="event-poll.ejs" role="button">Click here!</a>
+    </div>
+    </center>
+
+    <footer>
+      <% include ./partials/_footer %>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
