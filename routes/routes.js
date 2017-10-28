@@ -7,6 +7,9 @@ const eventHelper = require('../lib/event-helpers.js');
 const ENV         = process.env.ENV || "development";
 const knexConfig  = require("../knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
+const shortid     = require('shortid');
+
+const makeHash = shortid.generate() + shortid.generate();
 
 // // DISPLAY PAGES
 
@@ -59,21 +62,29 @@ router.get("/events/:hash", (req, res) => {
 
 // event proposal form page
 router.post("/events", (req, res) => {
-  const organizerName = request.body.organizerName.trim();      
-  const email = request.body.email.trim();
-  const proposedEventName = request.body.proposedEventName.trim();
-  const proposedEventDates =  request.body.proposedEventDates;
-  const proposedEventDescription = request.body.proposedEventDescription.trim();
+  
+  const two = req.body.id;
+  const one = req.body.name;
+  
+  const urlHash = makeHash;
+  res.json({result: `${urlHash}`});
 
-  if (!organizerName || !email || !proposedEventName || !proposedEventDates || !proposedEventDescription) {
-    res.status(303);
-  } else {
-    res.redirect("/events/:hash/share");    
-  }
+  // const organizerName = req.body.organizerName.trim();      
+  // const email = request.body.email.trim();
+  // const proposedEventName = req.body.proposedEventName.trim();
+  // const proposedEventDates =  req.body.proposedEventDates;
+  // const proposedEventDescription = req.body.proposedEventDescription.trim();
+
+  // if (!organizerName || !email || !proposedEventName || !proposedEventDates || !proposedEventDescription) {
+  //   res.status(303);
+  // } else {
+  //   res.redirect("/events/:hash/share");    
+  // }
   // const user_id = request.session.user_id; 
 });
 
 // // DATABASE PUT/POST QUERIES
+
 
 // add a new attendee their responses
 router.post("/api/v1/events/:hash/attendees", (req, res) => {
