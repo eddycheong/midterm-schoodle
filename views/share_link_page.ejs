@@ -31,13 +31,13 @@
             <label id="your-link" for="link">Your link:</label>
           </div>
           <div>
-            <input id="link" type="text" placeholder="http://www.gupmusic.com/" style="width: 300px">
+            <input id="link" type="text" value="http://localhost:8080/events/<%= hash %>/" style="width: 300px">
           </div>
           <div id ="witness">
             <label id="event-page" for="see-event">Your event page:</label>
           </div>
           <div>
-            <a id ="see-event" class="btn btn-primary btn-lg" method="GET" href="/events/:hash" role="button">See your event!</a>
+            <a id ="see-event" class="btn btn-primary btn-lg" method="GET" href="/events/<%= hash %>/" role="button">See your event!</a>
           </div>
         </form>
 
