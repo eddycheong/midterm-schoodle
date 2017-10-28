@@ -12,6 +12,24 @@ body {
     margin: 0 auto;
     text-align: center;
     font-family: ‘Nunito’, sans-serif; }
+  body h1:hover {
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    -webkit-stroke-width: 5.3px;
+    -webkit-stroke-color: #FFFFFF;
+    -webkit-fill-color: #FFFFFF;
+    text-shadow: 1px 0px 20px #69DDFF; }
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0); }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0); }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0); } }
   body h2 {
     color: #244751;
     font-size: 30;
@@ -48,5 +66,37 @@ body {
     font-size: 24px; }
   body #see-event {
     width: 200px; }
+  body #see-event:hover {
+    background-color: #9B5094; }
+  body .jumbotron {
+    background-color: #EEE; }
+  body .lead {
+    padding-bottom: 40px; }
+  body #create-schoodle {
+    width: 300px;
+    font-size: 30px; }
+  body #create-schoodle:hover {
+    background-color: #9B5094; }
+  body #proposal {
+    width: 160px;
+    font-size: 24px; }
+  body #proposal:hover {
+    background-color: #9B5094; }
+  body input:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  body textarea:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  body #create-schoodle:active {
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px); }
+  body #proposal:active {
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px); }
+  body #see-event:active {
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px); }
 
 /*# sourceMappingURL=layout.css.map */
