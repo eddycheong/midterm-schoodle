@@ -29,32 +29,32 @@
 
         <h2>Provide Your Event Details!</h2>
 
-      <form class="eventDetails">
-        <div>
-          <label for='title'>Title:</label><br>
-            <input type="text" name="proposedEventName" id="d-pollTitle" placeholder="My best party..." required="required" maxlength="64">
-        </div>
+        <form class="eventDetails">
+          <div>
+            <label for='title'>Title:</label><br>
+              <input type="text" name="proposedEventName" id="d-pollTitle" placeholder="My best party..." required="required" maxlength="64">
+          </div>
 
-        <div>
-          <label for='description'>Description:</label><br>
-            <textarea id="d-pollDescription" rows="1" cols="25" placeholder="Balloons provided!" maxlength="512"></textarea>
-        </div>
+          <div>
+            <label for='description'>Description:</label><br>
+              <textarea name="proposedEventDescription" id="d-pollDescription" rows="1" cols="25" placeholder="Balloons provided!" maxlength="512"></textarea>
+          </div>
 
-        <label for='date'>Pick your possible dates!</label><br>
-          <input name='date' id='date' type='date'><br><br>
-        
-        <div class="form-group">
-            <input type="text" name="organizerName" id="d-initiatorName" placeholder="My name" required="required" maxlength="64">
-        </div>
+          <label for='date'>Pick your possible dates!</label><br>
+            <input name='proposedEventDates' id='date' type='date'><br><br>
+          
+          <div class="form-group">
+              <input type="text" name="organizerName" id="d-initiatorName" placeholder="My name" required="required" maxlength="64">
+          </div>
 
-        <div class="form-group">
-            <input type="email" value="" id="d-initiatorEmail" placeholder="My email" required="required" maxlength="128">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-      </center>
+          <div class="form-group">
+              <input name="email"type="email" id="d-initiatorEmail" placeholder="My email" required="required" maxlength="128">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </center>
 
-  </main>
+    </main>
 
 
     <footer>
