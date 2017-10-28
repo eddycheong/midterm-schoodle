@@ -11,6 +11,9 @@
 
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="../styles/layout.css" type="text/css"/>
   </head>
 
   <body>
@@ -18,16 +21,18 @@
       <% include ./partials/_header %>
     </header>
 
-    <center>
+    <center class="form">
       <h1>What's the occasion?</h1>
       <div>
+        <label for='title'>Give your event a title!</label><br>
         <form class="proposedEventName">
           <input type="text" value="" id="d-pollTitle" placeholder="Enter title" required="required" maxlength="64">
           </form>
       </div>
       <div>
+        <label for='description'>Give your event a brief discription.</label><br>
         <form class="proposedEventDescription">
-          <textarea id="d-pollDescription" rows="1" placeholder="Add note" maxlength="512" style="overflow: hidden; word-wrap: break-word; height: 19px;"></textarea>
+          <textarea id="d-pollDescription" rows="1" cols="25" placeholder="Add note" maxlength="512"></textarea>
         </form>
       </div>
 

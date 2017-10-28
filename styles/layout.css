@@ -34,5 +34,7 @@ body {
   body .container span {
     font-size: 100%;
     line-height: 60px; }
+  body .form {
+    padding-top: 80px; }
 
 /*# sourceMappingURL=layout.css.map */
