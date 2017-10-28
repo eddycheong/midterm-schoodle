@@ -55,5 +55,8 @@ body {
   body #create-schoodle {
     width: 300px;
     font-size: 30px; }
+  body #proposal {
+    width: 160px;
+    font-size: 24px; }
 
 /*# sourceMappingURL=layout.css.map */
