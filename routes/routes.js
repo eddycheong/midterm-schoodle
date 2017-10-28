@@ -49,9 +49,8 @@ router.get("/events/:hash", (req, res) => {
   ];
 
   Promise.all(eventInformation)
-    .then(temp => {
-      res.json(temp);
-        // res.render("event_proposal_display_page")
+    .then(data => {
+      res.render("event_proposal_display_page")
     });
 });
 
