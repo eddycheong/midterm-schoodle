@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const eventHelpers = require('../lib/event-helpers.js');
+const eventHelper = require('../lib/event-helpers.js');
 
 const ENV         = process.env.ENV || "development";
 const knexConfig  = require("../knexfile");
@@ -21,13 +21,38 @@ router.get("/create", (req, res) => {
 });
 
 // event link share page
-router.get("/events/:hash/share", (req, res) => { //:hash 
+router.get("/events/:hash/share", (req, res) => {
+
+  // First, validate if hash is valid, if not, send error
+  res.locals.hash = req.params.hash;
   res.render("share_link_page");
 });
 
 // event proposal display page
 router.get("/events/:hash", (req, res) => { 
-res.render("event_proposal_display_page")
+  const eventID = req.params.hash,
+        db = eventHelper(knex);
+
+  const eventInformation = [
+    db.getEventSummary(eventID),
+    db.getEventOrganizer(eventID),
+    db.getEventDateOptions(eventID),
+    db.getEventAttendees(eventID),
+    db.getEventAttendees(eventID)
+    .then(attendees => {
+      const attendeeResponses = attendees.map(attendee => {
+        return db.getEventAttendeeResponses(eventID, attendee.id);
+      });
+
+      return Promise.all(attendeeResponses);
+    })
+  ];
+  
+  Promise.all(eventInformation)
+    .then(temp => {
+      res.json(temp);
+        // res.render("event_proposal_display_page")
+    });
 });
 
 
