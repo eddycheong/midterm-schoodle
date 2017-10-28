@@ -24,7 +24,7 @@ router.get("/create", (req, res) => {
 router.get("/events/:hash/share", (req, res) => {
 
   // First, validate if hash is valid, if not, send error
-  res.locals.hash = req.params.hash;
+  res.locals.sickness = req.params.hash;
   res.render("share_link_page");
 });
 
@@ -47,7 +47,7 @@ router.get("/events/:hash", (req, res) => {
       return Promise.all(attendeeResponses);
     })
   ];
-  
+
   Promise.all(eventInformation)
     .then(temp => {
       res.json(temp);
@@ -76,16 +76,30 @@ router.post("/events", (req, res) => {
 
 // // DATABASE PUT/POST QUERIES
 
-// add new attendee
-router.post("api/v1/events/:hash/attendees", (req, res) => {
-  const attendeeName = request.body.attendeeName.trim();      
-  const attendeeEmail = request.body.attendeeEmail.trim();
-  const attendeeEventDatesResponse =  request.body.attendeeEventDatesResponse;
+// add a new attendee their responses
+router.post("/api/v1/events/:hash/attendees", (req, res) => {
+  const eventID = req.params.hash;
+  const {attendeeName, attendeeEmail} = req.body;
+
+  // const attendeeEventDatesResponse =  req.body.attendeeEventDatesResponse;
+
 
   if (!attendeeName || !attendeeEmail ) {
-    res.status(303);    
+    console.log("I'm in here!")
+    res.sendStatus(400);    
   } else {
-    redirect("/api/v1/events/:hash/attendees");
+    const newUser = {
+      name: attendeeName,
+      email: attendeeEmail
+    };
+
+    eventHelper(knex).createUser(newUser)
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch(()=> {
+      res.sendStatus(500);
+    });
   }
 });
 
