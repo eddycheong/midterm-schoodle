@@ -3,6 +3,12 @@ public/styles
 .env
 *.log
 *.sqlite3
+<<<<<<< HEAD
 .sass_cache*
 .DS_Store*
 .sass-cache*
+=======
+.DS_Store
+.DS_store
+.sass-cache/*
+>>>>>>> form-page

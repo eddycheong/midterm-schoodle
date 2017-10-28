@@ -12,26 +12,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
-
+    <link rel="stylesheet" href="../styles/layout.css" type="text/css"/>
   </head>
 
   <body>
     <header>
       <% include ./partials/_header %>
     </header>
-    <main>
+    <center>
       <div class="jumbotron">
-        <h1 class="display-3">Welcome to Schoodle!</h1>
-        <center>
-          <p class="lead">The smartest, functional event planner you'll find at lighthouse labs.</p>
-          <hr class="my-4">
-          <p class="lead">
-            <a class="btn btn-primary btn-lg" method="GET" href="event_proposal_form_page" role="button">Create Schoodle Event</a>
-          </p>
-        </center>
-      </div>
-    </main>
+      <h1>Share your event!</h1>
+      <form>
+      <label for="link">Your link:</label>
+      <input id="link" type="text" placeholder="http://www.gupmusic.com/" style="width: 300px">
+      </form>
+    <h3>See your event!</h3>
+    <a class="btn btn-primary btn-lg" href="event-poll.ejs" role="button">Click here!</a>
+    </div>
+    </center>
 
     <footer>
       <% include ./partials/_footer %>

@@ -44,6 +44,28 @@ shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWX
 // Mount all resource routes
 app.use("/", routes); //(knex)
 
+// event proposal form page
+app.get("/create", (req, res) => {
+  res.render("event_proposal_form_page");
+});
+
+// event link share page
+app.get("/events/share", (req, res) => {  // :hash 
+  res.render("share_link_page");
+});
+
+// event proposal display page
+app.get("/events/6", (req, res) => {
+
+        // res.json(res.locals);
+        res.render("event_proposal_display_page");
+      });
+  
+  
+    //get attendees 
+  
+
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
