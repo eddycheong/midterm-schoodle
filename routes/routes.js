@@ -27,7 +27,7 @@ router.get("/create", (req, res) => {
 router.get("/events/:hash/share", (req, res) => {
 
   // First, validate if hash is valid, if not, send error
-  res.locals.sickness = req.params.hash;
+  res.locals.hash = req.params.hash;
   res.render("share_link_page");
 });
 
@@ -65,21 +65,21 @@ router.post("/events", (req, res) => {
   
   const two = req.body.id;
   const one = req.body.name;
-  
+
   const urlHash = makeHash;
   res.json({result: `${urlHash}`});
 
-  // const organizerName = req.body.organizerName.trim();      
-  // const email = request.body.email.trim();
-  // const proposedEventName = req.body.proposedEventName.trim();
-  // const proposedEventDates =  req.body.proposedEventDates;
-  // const proposedEventDescription = req.body.proposedEventDescription.trim();
+  const organizerName = req.body.organizerName;      
+  const email = request.body.email;
+  const proposedEventName = req.body.proposedEventName;
+  const proposedEventDates =  req.body.proposedEventDates;
+  const proposedEventDescription = req.body.proposedEventDescription;
 
-  // if (!organizerName || !email || !proposedEventName || !proposedEventDates || !proposedEventDescription) {
-  //   res.status(303);
-  // } else {
-  //   res.redirect("/events/:hash/share");    
-  // }
+  if (!organizerName || !email || !proposedEventName || !proposedEventDates || !proposedEventDescription) {
+    res.status(303);
+  } else {
+    res.redirect("/events/:hash/share");    
+  }
   // const user_id = request.session.user_id; 
 });
 
