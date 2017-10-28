@@ -98,5 +98,11 @@ body {
     background-color: #666699;
     box-shadow: 0 5px #666;
     transform: translateY(4px); }
+  body #attendee-form-submit-button:hover {
+    background-color: #9B5094; }
+  body #attendee-form-submit-button:active {
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px); }
 
 /*# sourceMappingURL=layout.css.map */
