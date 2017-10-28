@@ -52,10 +52,12 @@ body {
     max-width: 680px;
     padding: 0 15px;
     float: left;
-    bottom: 0; }
+    bottom: 0;
+    opacity: 0.5; }
   body .container span {
     font-size: 100%;
-    line-height: 60px; }
+    line-height: 60px;
+    color: #1B1817; }
   body #share {
     padding-top: 40px; }
   body #witness {
