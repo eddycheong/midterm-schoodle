@@ -1,8 +1,9 @@
 body {
   background-color: #EEE;
-  font-family: ‘Nunito’, sans-serif;
+  font-family: 'Cuprum', sans-serif;
   main {
     padding-top: 80px;
+    font-family: 'Cuprum', sans-serif;
   }
   h1 {
     color: #244751;
@@ -10,6 +11,7 @@ body {
     font-style: italic;
     margin: 0 auto;
     text-align: center;
+    font-family: ‘Nunito’, sans-serif;
   }
   h2 {
     color: #244751;
@@ -18,17 +20,17 @@ body {
     text-align: center;
   }
   #nav-bar {
-  position: fixed;
-  height: 80px;
-  width: 100%;
-  background-color: #449DD1;
-  color: #e8fdff;
-  padding: 0 2em 0 2em;
-  top: 0;
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    background-color: #449DD1;
+    color: #e8fdff;
+    padding: 0 2em 0 2em;
+    top: 0;
   }
   #nav-bar .header{
-  font-size: 200%;
-  line-height: 80px;
+    font-size: 200%;
+    line-height: 80px;
   }
   .container {
     position: fixed;
@@ -39,11 +41,23 @@ body {
     bottom: 0;
   }
   .container span {
-  font-size: 100%;
-  line-height: 60px;
+    font-size: 100%;
+    line-height: 60px;
   }
-  .form {
-    padding-top: 78px;
+  #share {
+    padding-top: 40px;
+  }
+  #witness {
+    padding-top: 40px;
+  }
+  #your-link {
+    font-size: 24px;
+  }
+  #event-page {
+    font-size: 24px;
+  }
+  #see-event {
+    width: 200px
   }
 }
 
