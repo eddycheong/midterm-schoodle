@@ -2,6 +2,11 @@
 
 const express = require('express');
 const router  = express.Router();
+const eventHelpers = require('../lib/event-helpers.js');
+
+const ENV         = process.env.ENV || "development";
+const knexConfig  = require("../knexfile");
+const knex        = require("knex")(knexConfig[ENV]);
 
 // // DISPLAY PAGES
 
@@ -21,8 +26,21 @@ router.get("/events/:hash/share", (req, res) => {
 });
 
 // event proposal display page
-router.get("/events/:hash", (req, res) => {
-  res.render("event_proposal_display_page");
+router.get("/events/60b725f10c9c85c70d97880dfe8191b3", (req, res) => {
+
+  const organizer = eventHelpers(knex).getEventOrganizer("60b725f10c9c85c70d97880dfe8191b3");
+  const attendees = eventHelpers(knex).getEventAttendees("60b725f10c9c85c70d97880dfe8191b3");
+
+  Promise.all([organizer, attendees])
+    .then(([organizer, attendees]) => {
+      res.locals.organizer = organizer[0].name;
+      res.locals.attendees = attendees;
+      res.json(res.locals);
+      // res.render("event_proposal_display_page");
+    })
+
+
+  //get attendees 
 });
 
 // // POST FORM
