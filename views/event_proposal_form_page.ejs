@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Create Your Event</title>
+    <title>Schoodle</title>
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link href=“https://fonts.googleapis.com/css?family=Changa|Nunito” rel=“stylesheet”>
 
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -30,6 +31,7 @@
           <input type="text" value="" id="d-pollTitle" placeholder="Enter title" required="required" maxlength="64">
           </form>
       </div>
+
       <div>
         <label for='description'>Give your event a brief discription.</label><br>
         <form class="proposedEventDescription">
@@ -42,6 +44,26 @@
       <form class="proposedEventDates">
         <input name='date' id='date' type='date'><br><br>
       </form>
+
+      <div class="container">
+        <div class="row">
+            <div class='col-sm-6'>
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    $('#datetimepicker1').datetimepicker();
+                });
+            </script>
+        </div>
+    </div>
 
       <h1>Let your guests know who you are!</h1>
       <div class="form-group">
