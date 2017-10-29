@@ -61,9 +61,10 @@
           <% }) %>
         </thead>
         <tbody>
-        <form class="form-group row" method="POST" action="/api/v1/events/60b725f10c9c85c70d97880dfe8191b3/attendees">
+        <form class="form-group row" method="POST" action="/api/v1/events/<%= eventID %>/attendees">
           <tr class="display-table-row">
-            <td id="attendee-input"><input type="text" name="attendeeName" placeholder="Name: " required="required" maxlength="64">
+            <td id="attendee-input">
+              <input type="text" name="attendeeName" placeholder="Name: " required="required" maxlength="64">
               <input type="email" name="attendeeEmail" placeholder="Email: " required="required" maxlength="64">
               <button type="submit" method="POST" id="attendee-form-submit-button"class="btn btn-primary">Submit</button>
             </td>
