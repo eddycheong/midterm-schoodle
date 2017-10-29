@@ -10,7 +10,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
 
-
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
@@ -26,6 +25,11 @@
     <script type="text/javascript">
       $('#document').ready(function(e){
         console.log("document loaded");
+
+        $('#datepicker').datepicker({
+                multidate: true,
+            });
+
         $('#SubmitBtn').click(function() {
 
           const formInfo = $('.eventDetails').serializeArray();
@@ -50,65 +54,50 @@
               console.log("Some error "+ error);
             }
           }); //end of the AJAX Call here.
-
         });  // #SubmitBtn end
-
       }); //main function ends
 
 
       </script>
-
-
-
     </head>
-
   <body>
     <header>
       <% include ./partials/_header %>
     </header>
 
     <main>
-      <section id="event-form-container">
-        <center class="form">
-
-          <h2>Provide Your Event Details!</h2>
-
-          <form class="eventDetails">
-            <label for='title'>Title:</label>
-            <div>
+      <center class="form">
+        <h2>Provide Your Event Details!</h2>
+        <form class="eventDetails">
+          <div>
+            <label for='title'>Title:</label><br>
               <input type="text" name="proposedEventName" id="d-pollTitle" placeholder="My best party..." required="required" maxlength="64">
-            </div>
+          </div>
 
-            <label for='description'>Description:</label>
-            <div>
+          <div>
+            <label for='description'>Description:</label><br>
               <textarea name="proposedEventDescription" id="d-pollDescription" rows="1" cols="25" placeholder="Balloons provided!" maxlength="512"></textarea>
-            </div>
+          </div>
 
-            <label for='date'>Pick your possible dates!</label><br>
-            <div>
-              <input name='proposedEventDates' id='date' type='date'><br><br>
-            </div>
+          <label for='date'>Pick your possible dates!</label><br>
+            <input name='proposedEventDates' id='date' type='date'><br><br>
 
-            <label>Let your guests know who you are!</label>
-            <div class="form-group">
-                <input type="text" name="organizerName" id="d-initiatorName" placeholder="My name" required="required" maxlength="64">
-            </div>
+          <div class="form-group">
+              <input type="text" name="organizerName" id="d-initiatorName" placeholder="My name" required="required" maxlength="64">
+          </div>
 
-            <label>Include your email so they can contact you!</label>
-            <div class="form-group">
-                <input name="email" type="email" id="d-initiatorEmail" placeholder="My email" required="required" maxlength="128">
-            </div>
-            <button type="button" class="btn btn-primary" id="SubmitBtn">Submit</button>
-          </form>
-          </center>
-        </section>
+          <div class="form-group">
+              <input name="email" type="email" id="d-initiatorEmail" placeholder="My email" required="required" maxlength="128">
+          </div>
+          <button type="button" class="btn btn-primary" id="SubmitBtn">Submit</button>
+        </form>
+        </center>
+
     </main>
-
 
     <footer>
       <% include ./partials/_footer %>
     </footer>
-
 
   </body>
 </html>

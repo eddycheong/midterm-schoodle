@@ -24,6 +24,10 @@ body {
       text-shadow: 1px 0px 20px #69DDFF;
 }
 
+h4 {
+  font-size: 1.4em;
+}
+
 form.form-group.row {
   padding: 10px 50px;
 }
@@ -113,6 +117,10 @@ form.form-group.row {
   #create-schoodle {
     width: 300px;
     font-size: 30px;
+  }
+  #welcome-display-msg {
+    padding: 20px;
+    text-decoration: underline;
   }
   #create-schoodle:hover {
     background-color: #9B5094

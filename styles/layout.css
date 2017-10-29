@@ -21,6 +21,8 @@ body {
     -webkit-stroke-color: #FFFFFF;
     -webkit-fill-color: #FFFFFF;
     text-shadow: 1px 0px 20px #69DDFF; }
+  body h4 {
+    font-size: 1.4em; }
   body form.form-group.row {
     padding: 10px 50px; }
 @keyframes shake {
@@ -83,6 +85,9 @@ body {
   body #create-schoodle {
     width: 300px;
     font-size: 30px; }
+  body #welcome-display-msg {
+    padding: 20px;
+    text-decoration: underline; }
   body #create-schoodle:hover {
     background-color: #9B5094; }
   body #SubmitBtn {

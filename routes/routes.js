@@ -9,7 +9,9 @@ const knexConfig  = require("../knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const shortid     = require('shortid');
 
-const makeHash = shortid.generate() + shortid.generate();
+function makeHash() {
+  return shortid.generate() + shortid.generate();
+}
 
 // // DISPLAY PAGES
 
@@ -71,7 +73,7 @@ router.post("/events", (req, res) => {
   const proposedEventName = req.body.proposedEventName;
   const proposedEventDates =  req.body.proposedEventDates;
   const proposedEventDescription = req.body.proposedEventDescription;
-  const urlHash = makeHash;
+  const urlHash = makeHash();
 
   res.json({result: `${urlHash}`, 
     organizerName: organizerName, 
