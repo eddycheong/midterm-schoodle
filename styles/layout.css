@@ -53,6 +53,12 @@ body {
   body #editBtn {
     margin-left: 30px;
     opacity: 0.8; }
+  body #editBtn:hover {
+    background-color: #9B5094; }
+  body #editBtn:active {
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px); }
   body #nav-bar {
     position: fixed;
     height: 80px;

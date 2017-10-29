@@ -77,6 +77,14 @@ form.form-group.row {
     margin-left: 30px;
     opacity: 0.8;
   }
+  #editBtn:hover {
+    background-color: #9B5094
+  }
+  #editBtn:active {
+    background-color: #666699;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
   #nav-bar {
     position: fixed;
     height: 80px;
