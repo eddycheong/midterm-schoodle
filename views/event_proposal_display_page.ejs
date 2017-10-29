@@ -19,7 +19,10 @@
 
   <!-- CSS Main-->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
+<<<<<<< HEAD
 
+=======
+>>>>>>> development
 
   <!-- CSS -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
@@ -39,26 +42,27 @@
    <h2>Choose your event dates!</h2>
 
 <div class="col-auto">
-    <table id="form-section-table" class="table table-bordered">
-      <thead>
-        <th class="proposal-display-table-headers">Participants</th>
-        <th>Oct. 26</th>
-        <th>Oct. 27</th>
-        <th>Oct. 28</th>
-      </thead>
-      <tbody>
+
+      <table id="form-section-table" class="table table-bordered">
+        <thead>
+          <th class="proposal-display-table-headers">Participants</th>
+          <th>Oct. 26</th>
+          <th>Oct. 27</th>
+          <th>Oct. 28</th>
+        </thead>
+        <tbody>
         <form class="form-group row" method="POST" action="/api/v1/events/60b725f10c9c85c70d97880dfe8191b3/attendees">
-              <tr class="display-table-row">
-                <td>
-                  <input type="text" name="attendeeName" placeholder="Name: " required="required" maxlength="64">
-                  <input type="email" name="attendeeEmail" placeholder="Email: " required="required" maxlength="64">
-                </td>
-                <td class="proposal-display-table-checkbox"><input type="checkbox"></td>
-                <td class="proposal-display-table-checkbox"><input type="checkbox"></td>
-                <td class="proposal-display-table-checkbox"><input type="checkbox"></td>
-              </tr>
-            <button type="submit" method="POST" id="attendee-form-submit-button"class="btn btn-primary">Submit</button>
-        </form>
+          <tr class="display-table-row">
+            <td id="attendee-input"><input type="text" name="attendeeName" placeholder="Name: " required="required" maxlength="64">
+              <input type="email" name="attendeeEmail" placeholder="Email: " required="required" maxlength="64">
+              <button type="submit" method="POST" id="attendee-form-submit-button"class="btn btn-primary">Submit</button>
+            </td>
+            <td class="proposal-display-table-checkbox"><input type="checkbox" name="ck_1"></td>
+            <td class="proposal-display-table-checkbox"><input type="checkbox" name="ck_2"></td>
+            <td class="proposal-display-table-checkbox"><input type="checkbox" name="ck_3"></td>
+          </tr>
+        <!-- <button type="submit" method="POST" id="attendee-form-submit-button"class="btn btn-primary">Submit</button> -->
+      </form>
 
         <tr class="display-table-row">
           <input type="hidden" value="10">
