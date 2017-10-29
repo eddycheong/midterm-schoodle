@@ -30,7 +30,6 @@ $(() => {
 
       // Hit Edit Button
           $('#editBtn').on('click', function() {
-            location.reload();
           })
 
       // Add new Row With Attendee
