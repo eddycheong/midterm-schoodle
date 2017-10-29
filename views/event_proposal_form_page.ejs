@@ -38,10 +38,11 @@
             })
         });
 
-        
         $('#SubmitBtn').click(function() {
 
           const formInfo = $('.eventDetails').serializeArray();
+
+          console.log(formInfo);
 
           $.ajax({
             method: 'POST',
@@ -86,13 +87,8 @@
         //     error: function(error){
         //       console.log("Some error "+ error);
         //     }
-        //   }); //end of the AJAX Call here
-        // });  // #EditBtn end
-
-
-
-
-
+        //   });
+        // });
 
       }); //main function ends
 
