@@ -58,6 +58,8 @@ router.get("/events/:hash", (req, res) => {
   Promise.all(eventInformation)
     .then(([summary, organizer, dateOpts, attendees, responses]) => {
 
+      res.locals.summary = summary[0];
+      res.locals.organizer = organizer[0];
       res.locals.dates = dateOpts.map(date => {
         return {
           id: date.id,
