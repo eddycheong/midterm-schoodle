@@ -11,4 +11,5 @@ public/styles
 .DS_Store
 .DS_store
 .sass-cache/*
+styles/layout.css.map
 >>>>>>> form-page
