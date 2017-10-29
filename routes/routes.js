@@ -68,6 +68,7 @@ router.get("/events/:hash", (req, res) => {
   Promise.all(eventInformation)
     .then(([summary, organizer, dateOpts, responses]) => {
 
+      res.locals.eventID = eventID;
       res.locals.summary = summary[0];
       res.locals.organizer = organizer[0];
       res.locals.dates = dateOpts.map(date => {
@@ -136,7 +137,6 @@ router.post("/api/v1/events/:hash/attendees", (req, res) => {
   const yesDateOptions = (attendeeResponses
     ? attendeeResponses.reduce((obj, item) => (obj[item.name] = item.value, obj), {})
     : {});
-
 
   if (!attendeeName || !attendeeEmail) {
     res.sendStatus(400);
