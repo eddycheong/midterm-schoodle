@@ -2,6 +2,8 @@
 
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
+
 const eventHelper = require('../lib/event-helpers.js');
 
 const ENV = process.env.ENV || "development";
@@ -54,7 +56,15 @@ router.get("/events/:hash", (req, res) => {
   ];
 
   Promise.all(eventInformation)
-    .then(data => {
+    .then(([summary, organizer, dateOpts, attendees, responses]) => {
+
+      res.locals.dates = dateOpts.map(date => {
+        return {
+          id: date.id,
+          date: moment(date.date).format("MMM Do")
+        }
+      });
+
       res.render("event_proposal_display_page")
     });
 });
@@ -130,7 +140,6 @@ router.post("/api/v1/events/:hash/attendees", (req, res) => {
 
 
   if (!attendeeName || !attendeeEmail) {
-    console.log("I'm in here!")
     res.sendStatus(400);
   } else {
     const newUser = {
