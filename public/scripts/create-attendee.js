@@ -23,7 +23,7 @@ $(() => {
         data: newAttendee.serialize()
       })
         .done(() => {
-          $(".proposal-display-table-checkbox")
+          $("#attendee-input")
             .closest('.display-table-row')
             .css('display', 'none');
 
