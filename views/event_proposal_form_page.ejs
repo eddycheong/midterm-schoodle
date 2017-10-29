@@ -66,36 +66,40 @@
     </header>
 
     <main>
+      <section id="event-form-container">
+        <center class="form">
 
-      <center class="form">
+          <h2>Provide Your Event Details!</h2>
 
-        <h2>Provide Your Event Details!</h2>
-
-        <form class="eventDetails">
-          <div>
-            <label for='title'>Title:</label><br>
+          <form class="eventDetails">
+            <label for='title'>Title:</label>
+            <div>
               <input type="text" name="proposedEventName" id="d-pollTitle" placeholder="My best party..." required="required" maxlength="64">
-          </div>
+            </div>
 
-          <div>
-            <label for='description'>Description:</label><br>
+            <label for='description'>Description:</label>
+            <div>
               <textarea name="proposedEventDescription" id="d-pollDescription" rows="1" cols="25" placeholder="Balloons provided!" maxlength="512"></textarea>
-          </div>
+            </div>
 
-          <label for='date'>Pick your possible dates!</label><br>
-            <input name='proposedEventDates' id='date' type='date'><br><br>
+            <label for='date'>Pick your possible dates!</label><br>
+            <div>
+              <input name='proposedEventDates' id='date' type='date'><br><br>
+            </div>
 
-          <div class="form-group">
-              <input type="text" name="organizerName" id="d-initiatorName" placeholder="My name" required="required" maxlength="64">
-          </div>
+            <label>Let your guests know who you are!</label>
+            <div class="form-group">
+                <input type="text" name="organizerName" id="d-initiatorName" placeholder="My name" required="required" maxlength="64">
+            </div>
 
-          <div class="form-group">
-              <input name="email" type="email" id="d-initiatorEmail" placeholder="My email" required="required" maxlength="128">
-          </div>
-          <button type="button" class="btn btn-primary" id="SubmitBtn">Submit</button>
-        </form>
-        </center>
-
+            <label>Include your email so they can contact you!</label>
+            <div class="form-group">
+                <input name="email" type="email" id="d-initiatorEmail" placeholder="My email" required="required" maxlength="128">
+            </div>
+            <button type="button" class="btn btn-primary" id="SubmitBtn">Submit</button>
+          </form>
+          </center>
+        </section>
     </main>
 
 

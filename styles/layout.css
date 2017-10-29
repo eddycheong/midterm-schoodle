@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body {
-  background-color: #EEE;
+  background-color: #FFFFFF;
   font-family: 'Cuprum', sans-serif; }
   body main {
     padding-top: 80px;
@@ -114,5 +114,14 @@ body {
     background-color: #666699;
     box-shadow: 0 5px #666;
     transform: translateY(4px); }
+  body #event-form-container {
+    padding-bottom: 10px;
+    border: 1px solid;
+    border-color: #1B1817;
+    border-radius: 10px;
+    width: 450px;
+    margin: 0 auto;
+    margin-top: 3em;
+    background-color: #C9F2FF; }
 
 /*# sourceMappingURL=layout.css.map */
