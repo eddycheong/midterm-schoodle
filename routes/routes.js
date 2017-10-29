@@ -68,6 +68,7 @@ router.get("/events/:hash", (req, res) => {
   Promise.all(eventInformation)
     .then(([summary, organizer, dateOpts, responses]) => {
 
+      res.locals.eventID = eventID;
       res.locals.summary = summary[0];
       res.locals.organizer = organizer[0];
       res.locals.dates = dateOpts.map(date => {
@@ -79,15 +80,6 @@ router.get("/events/:hash", (req, res) => {
 
       res.locals.attendeeResponses = responses;
 
-      // console.log(responses);s
-
-
-      // res.locals.attendeeResponses = {};
-
-      // return attendees.map(attendee => {
-      //   return db.getEventAttendeeResponses(eventID, attendee.id);
-      // });
-
       res.render("event_proposal_display_page")
     });
 });
@@ -97,9 +89,6 @@ router.get("/events/:hash", (req, res) => {
 
 // event proposal form page
 router.post("/events", (req, res) => {
-
-  // const two = req.body.id;
-  // const one = req.body.name;
 
   const organizerName = req.body.organizerName;
   const email = req.body.email;
@@ -119,36 +108,29 @@ router.post("/events", (req, res) => {
       title: req.body.proposedEventName,
       description: req.body.proposedEventDescription,
       organizer_id: Number(id)
-    }
+    };
 
     return eventHelper(knex).createEvent(newEvent)
-  }).then(() => {
-    res.json({
-      result: `${urlHash}`,
-      organizerName: organizerName,
-      email: email,
-      proposedEventName: proposedEventName,
-      proposedEventDates: proposedEventDates,
-      proposedEventDescription: proposedEventDescription
+  })
+    .then(() => {
+      const eventDateOptions = {
+        eventID: urlHash,
+        dateOptions: req.body.proposedEventDates.split(",")
+          .map(date => new Date(date))
+      };
+
+      return eventHelper(knex).createEventDateOptions(eventDateOptions);
+    })
+    .then(() => {
+      res.json({
+        result: `${urlHash}`,
+        organizerName: organizerName,
+        email: email,
+        proposedEventName: proposedEventName,
+        proposedEventDates: proposedEventDates,
+        proposedEventDescription: proposedEventDescription
+      });
     });
-  });
-
-
-
-  // const newEvent = {
-
-  // };
-
-  // eventHelper.createEvent(newEvent).then(() => {
-  //   res.json({result: `${urlHash}`, 
-  //     organizerName: organizerName, 
-  //     email: email, 
-  //     proposedEventName: proposedEventName, 
-  //     proposedEventDates: proposedEventDates, 
-  //     proposedEventDescription: proposedEventDescription
-  //   });
-  // });
-
 });
 
 // // DATABASE PUT/POST QUERIES
@@ -157,10 +139,14 @@ router.post("/events", (req, res) => {
 // add a new attendee their responses
 router.post("/api/v1/events/:hash/attendees", (req, res) => {
   const eventID = req.params.hash;
-  const { attendeeName, attendeeEmail } = req.body;
 
-  // const attendeeEventDatesResponse =  req.body.attendeeEventDatesResponse;
+  const attendeeName = req.body.attendeeName.value,
+    attendeeEmail = req.body.attendeeEmail.value,
+    attendeeResponses = req.body.responses;
 
+  const yesDateOptions = (attendeeResponses
+    ? attendeeResponses.reduce((obj, item) => (obj[item.name] = item.value, obj), {})
+    : {});
 
   if (!attendeeName || !attendeeEmail) {
     res.sendStatus(400);
@@ -171,10 +157,43 @@ router.post("/api/v1/events/:hash/attendees", (req, res) => {
     };
 
     eventHelper(knex).createUser(newUser)
+      .then(attendeeID => {
+
+        return Promise.all([
+          attendeeID,
+          eventHelper(knex)
+            .getEventDateOptions(eventID)
+        ]);
+      })
+      .then(([attendeeID, eventdateOpts]) => {
+
+        const responses = eventdateOpts.map(dateOpt => {
+          if (yesDateOptions[dateOpt.id]) {
+            return {
+              id: Number(dateOpt.id),
+              response: true
+            }
+          }
+
+          return {
+            id: Number(dateOpt.id),
+            response: false
+          }
+        });
+
+        const attendeeResponses = {
+          attendeeID: Number(attendeeID),
+          responses: responses
+        }
+
+        return eventHelper(knex)
+          .createUserResponses(attendeeResponses);
+      })
       .then(() => {
         res.sendStatus(201);
       })
-      .catch(() => {
+      .catch(err => {
+        console.log(err);
         res.sendStatus(500);
       });
   }
