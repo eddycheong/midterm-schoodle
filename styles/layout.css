@@ -156,5 +156,7 @@ body {
     margin: 0 auto;
     margin-top: 6em;
     background-color: #C9F2FF; }
+  body #display-page-content {
+    padding-bottom: 80px; }
 
 /*# sourceMappingURL=layout.css.map */
