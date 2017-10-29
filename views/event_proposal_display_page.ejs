@@ -45,11 +45,8 @@
         <thead>
           <th class="proposal-display-table-headers">Participants</th>
           <% dates.forEach(date => { %>
-          <th date-id="<%= date.id %>"><%= date.date %></th>
+          <th><%= date.date %></th>
           <% }) %>
-          <!--<th>Oct. 26</th>
-          <th>Oct. 27</th>
-          <th>Oct. 28</th>-->
         </thead>
         <tbody>
         <form class="form-group row" method="POST" action="/api/v1/events/60b725f10c9c85c70d97880dfe8191b3/attendees">
@@ -62,7 +59,11 @@
             <td class="proposal-display-table-checkbox"><input type="checkbox" name="ck_2"></td>
             <td class="proposal-display-table-checkbox"><input type="checkbox" name="ck_3"></td>
             -->
-          
+            <% dates.forEach(date => {%>
+              <td class="proposal-display-table-checkbox">
+                <input type="checkbox" name="<%= date.id %>">
+              </td>
+            <% }) %>
           </tr>
         <!-- <button type="submit" method="POST" id="attendee-form-submit-button"class="btn btn-primary">Submit</button> -->
       </form>
