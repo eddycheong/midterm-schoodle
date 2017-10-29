@@ -33,8 +33,9 @@
         $(function () {
           $("#datepicker").datepicker({ 
                 todayHighlight: true,
-                multidate: true
-            }).datepicker('update', new Date());
+                multidate: true,
+                format: 'yyyy/mm/dd'
+            })
         });
 
         
@@ -87,12 +88,12 @@
               <textarea name="proposedEventDescription" id="d-pollDescription" rows="1" cols="25" placeholder="Balloons provided!" maxlength="512"></textarea>
           </div>
 
-            <label for='date'>Pick your possible dates!</label><br>
-              <input name='proposedEventDates' id='date' type='date' data-provide="datepicker"><br><br>
+            <!-- <label for='date'>Pick your possible dates!</label><br>
+              <input name='proposedEventDates' id='date' type='date' data-provide="datepicker"><br><br> -->
 
-              <label>Select Date: </label>
+              <label for='date'>Select Date: </label>
               <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-                  <input class="form-control" type="text" readonly />
+                  <input name='proposedEventDates' id='date' class="form-control" type="text" readonly />
                   <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
               </div>
 
