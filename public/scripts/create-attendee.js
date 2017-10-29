@@ -22,6 +22,18 @@ $(() => {
       })
         .done(() => {
 
+      // Hit Submit Button
+          $('#attendee-form-submit-button').one('click', function() {
+            $('<input id="editBtn" class="btn btn-primary btn-lg"></input>').attr({'type': 'button'}).val("Edit Your Entry").click(function(){
+            }).appendTo($('th.proposal-display-table-headers'));
+          });
+
+      // Hit Edit Button
+          $('#editBtn').on('click', function() {
+            location.reload();
+          })
+
+      // Add new Row With Attendee
           $("#attendee-input")
             .closest('.display-table-row')
             .css('display', 'none');
@@ -47,6 +59,13 @@ $(() => {
 
           const row = $("<tr>").addClass("display-table-row")
             .append(name)
+
+          const eventRows = $('thead > tr').children();
+          const eventDateOptions = eventRows.slice(1, eventRows.length);
+
+          eventDateOptions.each(function() { 
+            row.append(response())
+          });
 
           $("tbody").append(row);
         });

@@ -12,23 +12,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
+  <script type="text/javascript" src="/scripts/attendee-on-submit.js" ></script>  
   <script type="text/javascript" src="/scripts/create-attendee.js" ></script>
-
-  <script>
-    $( document ).ready(function() { 
- 
-    $('#attendee-form-submit-button').one('click', function() {
-        $('<input id="editBtn" class="btn btn-primary btn-lg"></input>').attr({'type': 'button'}).val("Edit Your Entry").click(function(){
-        }).appendTo($('th.proposal-display-table-headers'));
-
-    $('#editBtn').on('click', function() {
-      location.reload();
-    })    
-    });
-
-
-  });
-  </script>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -70,7 +55,7 @@
             <td id="attendee-input">
               <input type="text" name="attendeeName" placeholder="Name: " required="required" maxlength="64">
               <input type="email" name="attendeeEmail" placeholder="Email: " required="required" maxlength="64">
-              <button type="submit" method="POST" id="attendee-form-submit-button"class="btn btn-primary btn-sm">Submit</button>
+              <button type="submit" method="POST" id="attendee-form-submit-button"class="btn btn-primary btn sm">Submit</button>
             </td>
             <% dates.forEach(date => { %>
               <td class="proposal-display-table-checkbox">
