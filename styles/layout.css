@@ -50,6 +50,8 @@ body {
     margin: 0 20px 20px 20px; }
   body #datepicker > span:hover {
     cursor: pointer; }
+  body #editBtn {
+    margin-left: 30px; }
   body #nav-bar {
     position: fixed;
     height: 80px;

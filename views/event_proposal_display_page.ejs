@@ -14,6 +14,18 @@
     
   <script type="text/javascript" src="/scripts/create-attendee.js" ></script>
 
+  <script>
+    $( document ).ready(function() {
+
+    $('#attendee-form-submit-button').one('click', function() {
+        $('<input id="editBtn"></input>').attr({'type': 'button'}).val("Edit Your Entry").click(function(){
+        }).appendTo($('th.proposal-display-table-headers'));
+    });
+
+
+  });
+  </script>
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
@@ -43,7 +55,7 @@
 
       <table id="form-section-table" class="table table-bordered">
         <thead>
-          <th class="proposal-display-table-headers">Participants</th>
+          <th class="proposal-display-table-headers"><strong id="participants">Participants</strong></th>
           <% dates.forEach(date => { %>
           <th><%= date.date %></th>
           <% }) %>
