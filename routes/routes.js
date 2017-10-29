@@ -63,23 +63,29 @@ router.get("/events/:hash", (req, res) => {
 // event proposal form page
 router.post("/events", (req, res) => {
   
-  const two = req.body.id;
-  const one = req.body.name;
-
-  const urlHash = makeHash;
-  res.json({result: `${urlHash}`});
+  // const two = req.body.id;
+  // const one = req.body.name;
 
   const organizerName = req.body.organizerName;      
-  const email = request.body.email;
+  const email = req.body.email;
   const proposedEventName = req.body.proposedEventName;
   const proposedEventDates =  req.body.proposedEventDates;
   const proposedEventDescription = req.body.proposedEventDescription;
+  const urlHash = makeHash;
 
-  if (!organizerName || !email || !proposedEventName || !proposedEventDates || !proposedEventDescription) {
-    res.status(303);
-  } else {
-    res.redirect("/events/:hash/share");    
-  }
+  res.json({result: `${urlHash}`, 
+    organizerName: organizerName, 
+    email: email, 
+    proposedEventName: proposedEventName, 
+    proposedEventDates: proposedEventDates, 
+    proposedEventDescription: proposedEventDescription
+  });
+
+  // if (!organizerName || !email || !proposedEventName || !proposedEventDates || !proposedEventDescription) {
+  //   res.status(303);
+  // } else {
+  //   res.redirect("/events/:hash/share");    
+  // }
   // const user_id = request.session.user_id; 
 });
 
