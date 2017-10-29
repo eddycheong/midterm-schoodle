@@ -1,9 +1,5 @@
 $(() => {
 
-  // Hit Edit Button
-      $('#editBtn').on('click', function() {
-      })
-
   function buildAttendeeResponses(array) {
     return {
       attendeeName: array[0],
@@ -30,10 +26,21 @@ $(() => {
       $('<input id="editBtn" class="btn btn-primary btn-lg"></input>').attr({'type': 'button'}).val("Edit Your Entry").click(function(){
       }).appendTo($('th.proposal-display-table-headers'));
 
-      // Add new Row With Attendee
+
+    //       // Hit Edit Button
+    // $('#editBtn').on('click', function() {
+    //   alert("c")
+    //   $("#attendee-input")
+    //   .closest('.display-table-row')
+    //   .css();
+    // })
+
+      // Hide Submit Row
           $("#attendee-input")
             .closest('.display-table-row')
             .css('display', 'none');
+
+      // Add new Row With Attendee
 
           const newRow = {};
 
@@ -47,6 +54,7 @@ $(() => {
             .addClass("proposal-display-table-attendee-name")
             .text(newRow.attendeeName);
 
+          // add attendee responses per date
           const attendeeFullResponses = newAttendee.serializeArray();
           const attendeeCheckboxAnswers = attendeeFullResponses.slice(2, attendeeFullResponses.length)
 
@@ -54,10 +62,7 @@ $(() => {
             ? attendeeCheckboxAnswers.reduce((obj, item) => (obj[item.name] = item.value, obj), {})
             : {});
 
-          console.log(attendeeCheckboxAnswers);
-          console.log("yes date: ", yesDateOptions);
-
-
+          // determines check or X graphic 
           const response = (answer) => {
             if(answer) {
               return $("<td>")
@@ -87,6 +92,8 @@ $(() => {
         });
     });
   }
+
+
   
 
 
@@ -163,5 +170,13 @@ $(() => {
 //
 
   getNameAndRender();
+
+  $("#form-section-table").on('click', '#editBtn', function() {
+    $("#attendee-input")
+      .closest('.display-table-row')
+      .css('display', '');
+
+  })
+            
 });
 
