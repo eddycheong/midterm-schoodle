@@ -113,15 +113,32 @@ router.post("/events", (req, res) => {
     email: req.body.email
   };
 
+  // console.log(proposedEventDates);
+  // const test = req.body.proposedEventDates.split(",").map(x => new Date(x));
+  // console.log(test);
+
   eventHelper(knex).createUser(organizer).then(id => {
     const newEvent = {
       hash_id: urlHash,
       title: req.body.proposedEventName,
       description: req.body.proposedEventDescription,
       organizer_id: Number(id)
-    }
+    };
 
-    return eventHelper(knex).createEvent(newEvent)
+    // return eventHelper(knex).createEvent(newEvent);
+    
+    const eventDateOptions = {
+      eventID: urlHash,
+      dateOptions: req.body.proposedEventDates.split(",")
+        .map(date => new Date(date))
+    };
+
+    const createEvent = eventHelper(knex)
+            .createEvent(newEvent),
+          createEventDateOptions = eventHelper(knex)
+            .createEventDateOptions(eventDateOptions);
+
+    return Promise.all([createEvent, createEventDateOptions]);
   }).then(() => {
     res.json({
       result: `${urlHash}`,
