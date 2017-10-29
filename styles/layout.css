@@ -51,7 +51,8 @@ body {
   body #datepicker > span:hover {
     cursor: pointer; }
   body #editBtn {
-    margin-left: 30px; }
+    margin-left: 30px;
+    opacity: 0.8; }
   body #nav-bar {
     position: fixed;
     height: 80px;
