@@ -128,5 +128,14 @@ body {
     margin: 0 auto;
     margin-top: 2.5em;
     background-color: #C9F2FF; }
+  body #share-page-container {
+    padding-bottom: 10px;
+    border: 1px solid;
+    border-color: #1B1817;
+    border-radius: 10px;
+    width: 450px;
+    margin: 0 auto;
+    margin-top: 6em;
+    background-color: #C9F2FF; }
 
 /*# sourceMappingURL=layout.css.map */
