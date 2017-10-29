@@ -44,9 +44,12 @@
       <table id="form-section-table" class="table table-bordered">
         <thead>
           <th class="proposal-display-table-headers">Participants</th>
-          <th>Oct. 26</th>
+          <% dates.forEach(date => { %>
+          <th date-id="<%= date.id %>"><%= date.date %></th>
+          <% }) %>
+          <!--<th>Oct. 26</th>
           <th>Oct. 27</th>
-          <th>Oct. 28</th>
+          <th>Oct. 28</th>-->
         </thead>
         <tbody>
         <form class="form-group row" method="POST" action="/api/v1/events/60b725f10c9c85c70d97880dfe8191b3/attendees">
@@ -55,20 +58,22 @@
               <input type="email" name="attendeeEmail" placeholder="Email: " required="required" maxlength="64">
               <button type="submit" method="POST" id="attendee-form-submit-button"class="btn btn-primary">Submit</button>
             </td>
-            <td class="proposal-display-table-checkbox"><input type="checkbox" name="ck_1"></td>
+            <!--<td class="proposal-display-table-checkbox"><input type="checkbox" name="ck_1"></td>
             <td class="proposal-display-table-checkbox"><input type="checkbox" name="ck_2"></td>
             <td class="proposal-display-table-checkbox"><input type="checkbox" name="ck_3"></td>
+            -->
+          
           </tr>
         <!-- <button type="submit" method="POST" id="attendee-form-submit-button"class="btn btn-primary">Submit</button> -->
       </form>
 
-        <tr class="display-table-row">
+        <!--<tr class="display-table-row">
           <input type="hidden" value="10">
           <td class="proposal-display-table-attendee-name">Marcus</td>
           <td><i class="fa fa-check" aria-hidden="true"></i></td>
           <td><i class="fa fa-times" aria-hidden="true"></i></td>
           <td><i class="fa fa-check" aria-hidden="true"></i></td>
-        </tr>
+        </tr> -->
       </tbody>
       </table>
   </div>
