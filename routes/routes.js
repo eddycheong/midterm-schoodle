@@ -113,10 +113,6 @@ router.post("/events", (req, res) => {
     email: req.body.email
   };
 
-  // console.log(proposedEventDates);
-  // const test = req.body.proposedEventDates.split(",").map(x => new Date(x));
-  // console.log(test);
-
   eventHelper(knex).createUser(organizer).then(id => {
     const newEvent = {
       hash_id: urlHash,
@@ -125,30 +121,27 @@ router.post("/events", (req, res) => {
       organizer_id: Number(id)
     };
 
-    // return eventHelper(knex).createEvent(newEvent);
-    
-    const eventDateOptions = {
-      eventID: urlHash,
-      dateOptions: req.body.proposedEventDates.split(",")
-        .map(date => new Date(date))
-    };
+    return eventHelper(knex).createEvent(newEvent)
+  })
+    .then(() => {
+      const eventDateOptions = {
+        eventID: urlHash,
+        dateOptions: req.body.proposedEventDates.split(",")
+          .map(date => new Date(date))
+      };
 
-    const createEvent = eventHelper(knex)
-            .createEvent(newEvent),
-          createEventDateOptions = eventHelper(knex)
-            .createEventDateOptions(eventDateOptions);
-
-    return Promise.all([createEvent, createEventDateOptions]);
-  }).then(() => {
-    res.json({
-      result: `${urlHash}`,
-      organizerName: organizerName,
-      email: email,
-      proposedEventName: proposedEventName,
-      proposedEventDates: proposedEventDates,
-      proposedEventDescription: proposedEventDescription
+      return eventHelper(knex).createEventDateOptions(eventDateOptions);
+    })
+    .then(() => {
+      res.json({
+        result: `${urlHash}`,
+        organizerName: organizerName,
+        email: email,
+        proposedEventName: proposedEventName,
+        proposedEventDates: proposedEventDates,
+        proposedEventDescription: proposedEventDescription
+      });
     });
-  });
 
 
 
