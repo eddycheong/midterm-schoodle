@@ -46,7 +46,7 @@
         <thead>
           <th class="proposal-display-table-headers"><strong id="participants">Participants</strong></th>
           <% dates.forEach(date => { %>
-          <th><%= date.date %></th>
+          <th data-id='<%= date.id%>'><%= date.date %></th>
           <% }) %>
         </thead>
         <tbody>
