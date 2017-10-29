@@ -73,8 +73,9 @@ body {
     line-height: 80px; }
   body .container {
     position: fixed;
-    width: auto;
-    max-width: 680px;
+    min-width: 2000px;
+    max-width: 2000px;
+    height: auto;
     padding: 0 15px;
     float: left;
     bottom: 0;
