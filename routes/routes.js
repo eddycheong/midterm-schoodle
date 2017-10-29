@@ -44,11 +44,21 @@ router.get("/events/:hash", (req, res) => {
     db.getEventSummary(eventID),
     db.getEventOrganizer(eventID),
     db.getEventDateOptions(eventID),
-    db.getEventAttendees(eventID),
     db.getEventAttendees(eventID)
       .then(attendees => {
         const attendeeResponses = attendees.map(attendee => {
-          return db.getEventAttendeeResponses(eventID, attendee.id);
+          return db.getEventAttendeeResponses(eventID, attendee.id)
+            .then(attendeeResponses => {
+              return {
+                name: attendee.name,
+                responses: attendeeResponses.map(response => {
+                  return {
+                    event_date_id: response.event_date_id,
+                    response: response.event_date_response
+                  }
+                })
+              }
+            });
         });
 
         return Promise.all(attendeeResponses);
@@ -56,14 +66,27 @@ router.get("/events/:hash", (req, res) => {
   ];
 
   Promise.all(eventInformation)
-    .then(([summary, organizer, dateOpts, attendees, responses]) => {
+    .then(([summary, organizer, dateOpts, responses]) => {
 
+      res.locals.summary = summary[0];
+      res.locals.organizer = organizer[0];
       res.locals.dates = dateOpts.map(date => {
         return {
           id: date.id,
           date: moment(date.date).format("MMM Do")
         }
       });
+
+      res.locals.attendeeResponses = responses;
+
+      // console.log(responses);s
+
+
+      // res.locals.attendeeResponses = {};
+
+      // return attendees.map(attendee => {
+      //   return db.getEventAttendeeResponses(eventID, attendee.id);
+      // });
 
       res.render("event_proposal_display_page")
     });
