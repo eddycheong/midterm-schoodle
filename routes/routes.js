@@ -115,6 +115,9 @@ router.post("/events", (req, res) => {
         eventID: urlHash,
         dateOptions: req.body.proposedEventDates.split(",")
           .map(date => new Date(date))
+          .sort((a,b) => {
+            return a.getTime() - b.getTime();
+          })
       };
 
       return eventHelper(knex).createEventDateOptions(eventDateOptions);

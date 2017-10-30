@@ -23,9 +23,13 @@ body {
       -webkit-fill-color: #FFFFFF;
       text-shadow: 1px 0px 20px #69DDFF;
 }
+.my-4 {
+  padding-bottom: 45px; 
+}
 
 h4 {
   font-size: 1.4em;
+  margin-bottom: 15px;
 }
 
 form.form-group.row {
@@ -134,7 +138,11 @@ form.form-group.row {
     background-color: #9B5094
   }
   .jumbotron {
+<<<<<<< HEAD
     background-color: #FFFFFF
+=======
+    background-color: white;
+>>>>>>> master
   }
   .lead {
     padding-bottom: 40px;
