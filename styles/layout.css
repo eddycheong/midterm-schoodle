@@ -1,7 +1,10 @@
 @charset "UTF-8";
 body {
   background-color: #FFFFFF;
-  font-family: 'Cuprum', sans-serif; }
+  font-family: 'Cuprum', sans-serif;
+  /*label {
+    margin-left: 20px;
+  }*/ }
   body header #nav-bar {
     position: fixed;
     height: 80px;
@@ -60,8 +63,6 @@ body {
     width: 70%; }
   body #attendee-input {
     width: 35%; }
-  body label {
-    margin-left: 20px; }
   body #datepicker {
     width: 180px;
     margin: 0 20px 20px 20px; }
