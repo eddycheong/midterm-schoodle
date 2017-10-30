@@ -32,6 +32,10 @@ router.get("/events/:hash/share", (req, res) => {
 
   // First, validate if hash is valid, if not, send error
   res.locals.hash = req.params.hash;
+  res.locals.host = req.get('host');
+
+  console.log(req.get('host'));
+
   res.render("share_link_page");
 });
 
@@ -89,12 +93,6 @@ router.get("/events/:hash", (req, res) => {
 
 // event proposal form page
 router.post("/events", (req, res) => {
-
-  const organizerName = req.body.organizerName;
-  const email = req.body.email;
-  const proposedEventName = req.body.proposedEventName;
-  const proposedEventDates = req.body.proposedEventDates;
-  const proposedEventDescription = req.body.proposedEventDescription;
   const urlHash = makeHash();
 
   const organizer = {
@@ -122,14 +120,7 @@ router.post("/events", (req, res) => {
       return eventHelper(knex).createEventDateOptions(eventDateOptions);
     })
     .then(() => {
-      res.json({
-        result: `${urlHash}`,
-        organizerName: organizerName,
-        email: email,
-        proposedEventName: proposedEventName,
-        proposedEventDates: proposedEventDates,
-        proposedEventDescription: proposedEventDescription
-      });
+      res.redirect(`/events/${urlHash}/share`)
     });
 });
 
