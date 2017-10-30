@@ -1,89 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Schoodle</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
-  <script src="https://use.fontawesome.com/d33c8fb29b.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <head>
+    <title>Schoodle</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <script type="text/javascript" src="/scripts/create-attendee.js" ></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/d33c8fb29b.js"></script>
 
-  <!-- CSS Main-->
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
+    <!-- Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <!--App Scripts-->
+    <script type="text/javascript" src="/scripts/create-attendee.js" ></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
+  </head>
 
 
-</head>
-
-<body>
+  <body>
 
     <header>
-        <% include ./partials/_header %>
-      </header>
+      <% include ./partials/_header %>
+    </header>
 
-<main id="display-page-content">
-  <center>
+    <main id="display-page-content">
+      <center>
 
-  <h2 id="welcome-display-msg">Welcome to <%= summary.title %>, let <%= organizer.name %> know what dates are best!</h2>
-  <h3 id="event-description"><%= summary.description %> </h3>
-  <h4>Choose your event dates!</h4>
+        <h2 id="welcome-display-msg">Welcome to <%= summary.title %>, let <%= organizer.name %> know what dates are best!</h2>
+        <h3 id="event-description"><%= summary.description %> </h3>
+        <h4>Choose your event dates!</h4>
 
-<div class="col-auto">
+        <div class="col-auto">
 
-      <table id="form-section-table" class="table table-bordered">
-        <thead>
-          <th class="proposal-display-table-headers"><strong id="participants">Participants</strong></th>
-          <% dates.forEach(date => { %>
-          <th data-id='<%= date.id%>'><%= date.date %></th>
-          <% }) %>
-        </thead>
-        <tbody>
-        <form class="form-group row" method="POST" data-hash="<%= eventID %>" action="/api/v1/events/<%= eventID %>/attendees">
-          <tr class="display-table-row">
-            <td id="attendee-input">
-              <input type="text" name="attendeeName" placeholder="Name: " required="required" maxlength="64" id="user-submit-name">
-              <input type="email" name="attendeeEmail" placeholder="Email: " required="required" maxlength="64" id="user-submit-email">
-              <button type="submit" method="POST" id="attendee-form-submit-button"class="btn btn-primary btn sm">Submit</button>
-            </td>
-            <% dates.forEach(date => { %>
-              <td class="proposal-display-table-checkbox">
-                <input type="checkbox" name="<%= date.id %>"/>
-              </td>
-            <% }) %>
-          </tr>
-        </form>
-        <% attendeeResponses.forEach(attendee =>{ %>
-        <tr class="display-table-row">
-          <input type="hidden" value="10">
-          <td class="proposal-display-table-attendee-name"><%= attendee.name %></td>
-          <% attendee.responses.forEach(response => { %>
-            <td>
-              <i class="fa <%= (response.response ? 'fa-check' : 'fa-times') %>" aria-hidden="true">
-              </i>
-            </td>
-          <% })%>
-        </tr>
-        <% })%>
-      </tbody>
-      </table>
-  </div>
-</main>
+          <table id="form-section-table" class="table table-bordered">
+            <thead>
+              <th class="proposal-display-table-headers"><strong id="participants">Participants</strong></th>
 
-<footer>
+              <% dates.forEach(date => { %>
+              <th data-id='<%= date.id%>'><%= date.date %></th>
+              <% }) %>
+
+            </thead>
+
+            <tbody>
+              <form class="form-group row" method="POST" data-hash="<%= eventID %>" action="/api/v1/events/<%= eventID %>/attendees">
+                <tr class="display-table-row">
+                  <td id="attendee-input">
+                    <input type="text" name="attendeeName" placeholder="Name: " required="required" maxlength="64" id="user-submit-name">
+                    <input type="email" name="attendeeEmail" placeholder="Email: " required="required" maxlength="64" id="user-submit-email">
+                    <button type="submit" method="POST" id="attendee-form-submit-button"class="btn btn-primary btn sm">Submit</button>
+                  </td>
+
+                  <% dates.forEach(date => { %>
+                    <td class="proposal-display-table-checkbox">
+                    <input type="checkbox" name="<%= date.id %>"/>
+                    </td>
+                  <% }) %>
+
+                </tr>
+              </form>
+
+              <% attendeeResponses.forEach(attendee =>{ %>
+              <tr class="display-table-row">
+                <input type="hidden" value="10">
+                <td class="proposal-display-table-attendee-name"><%= attendee.name %></td>
+                <% attendee.responses.forEach(response => { %>
+
+                <td>
+                  <i class="fa <%= (response.response ? 'fa-check' : 'fa-times') %>" aria-hidden="true">
+                  </i>
+                </td>
+                <% })%>
+              </tr>
+              <% })%>
+            </tbody>
+          </table>
+        </div>
+      </center>
+    </main>
+
+  <footer>
     <% include ./partials/_footer %>
-</footer>
+  </footer>
 
-  </center>
-</body>
+  
+  </body>
 </html>
