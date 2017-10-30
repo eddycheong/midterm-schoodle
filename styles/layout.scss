@@ -1,82 +1,95 @@
 body {
   background-color: #FFFFFF;
   font-family: 'Cuprum', sans-serif;
+  header {
+    #nav-bar {
+      position: fixed;
+      height: 80px;
+      width: 100%;
+      background-color: #449DD1;
+      color: #e8fdff;
+      padding: 0 2em 0 2em;
+      top: 0;
+      z-index: 1;
+    }
+    #nav-bar .header{
+      font-size: 200%;
+      line-height: 80px;
+    }
+  }
   main {
     padding-top: 80px;
     font-family: 'Cuprum', sans-serif;
-  }
-  h1 {
-    color: #244751;
-    font-size: 40;
-    font-style: italic;
-    margin: 0 auto;
-    text-align: center;
-    font-family: ‘Nunito’, sans-serif;
-  }
-  h1:hover {
-  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-  -webkit-stroke-width: 5.3px;
+    .jumbotron {
+      background-color: white;
+    }
+    h1 {
+      color: #244751;
+      font-size: 40;
+      font-style: italic;
+      margin: 0 auto;
+      text-align: center;
+      font-family: ‘Nunito’, sans-serif;
+    }
+    h1:hover {
+      animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+      -webkit-stroke-width: 5.3px;
       -webkit-stroke-color: #FFFFFF;
       -webkit-fill-color: #FFFFFF;
       text-shadow: 1px 0px 20px #69DDFF;
-}
-.my-4 {
-  padding-bottom: 45px;
-}
-
-h4 {
-  font-size: 1.4em;
-  margin-bottom: 15px;
-}
-
-form.form-group.row {
-  padding: 10px 50px;
-}
-
-@keyframes shake {
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0);
+    }
+    h2 {
+      color: #244751;
+      font-size: 30;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h4 {
+      font-size: 1.4em;
+      margin-bottom: 15px;
+    }
+    .my-4 {
+      padding-bottom: 45px;
+    }
   }
-
-  20%, 80% {
-    transform: translate3d(2px, 0, 0);
+  form.form-group.row {
+    padding: 10px 50px;
   }
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
 
-  30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
-  }
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
 
-  40%, 60% {
-    transform: translate3d(4px, 0, 0);
-  }
-}
-  h2 {
-    color: #244751;
-    font-size: 30;
-    margin: 0 auto;
-    text-align: center;
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
   }
   .form-section-table {
     width: 70%;
   }
-
   #attendee-input {
     width: 35%;
   }
-
   label {
     margin-left: 20px;
   }
   #datepicker {
-    width:180px; margin: 0 20px 20px 20px;
+    width: 180px; margin: 0 20px 20px 20px;
   }
   #datepicker > span:hover{
     cursor: pointer;
   }
-
   #editBtn {
     margin-left: 30px;
     opacity: 0.8;
@@ -88,36 +101,6 @@ form.form-group.row {
     background-color: #666699;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
-  }
-  #nav-bar {
-    position: fixed;
-    height: 80px;
-    width: 100%;
-    background-color: #449DD1;
-    color: #e8fdff;
-    padding: 0 2em 0 2em;
-    top: 0;
-    z-index: 1;
-  }
-  #nav-bar .header{
-    font-size: 200%;
-    line-height: 80px;
-  }
-  .container {
-    position: fixed;
-    min-width: 2000px;
-    max-width: 2000px;
-    height: auto;
-    padding: 0 15px;
-    float: left;
-    bottom: 0;
-    background-color: #449DD1;
-    z-index: 1;
-  }
-  .container span {
-    font-size: 100%;
-    line-height: 60px;
-    color: #1B1817;
   }
   #share {
     padding-top: 40px;
@@ -136,9 +119,6 @@ form.form-group.row {
   }
   #see-event:hover {
     background-color: #9B5094
-  }
-  .jumbotron {
-    background-color: white;
   }
   .lead {
     padding-bottom: 40px;
@@ -225,6 +205,24 @@ form.form-group.row {
   }
   table.table-bordered > tbody > tr > td{
     border:1px solid #A9A9A9;
+  }
+  footer {
+    .container {
+      position: fixed;
+      min-width: 2000px;
+      max-width: 2000px;
+      height: auto;
+      padding: 0 15px;
+      float: left;
+      bottom: 0;
+      background-color: #449DD1;
+      z-index: 1;
+    }
+    .container span {
+      font-size: 100%;
+      line-height: 60px;
+      color: #1B1817;
+    }
   }
 }
 
