@@ -22,26 +22,23 @@ $(() => {
       })
         .done(() => {
 
+
       // Make Edit Button
       $('<input id="editBtn" class="btn btn-primary btn-lg"></input>').attr({'type': 'button'}).val("Edit Your Entry").click(function(){
       }).appendTo($('th.proposal-display-table-headers'));
 
-
-    //       // Hit Edit Button
-    // $('#editBtn').on('click', function() {
-    //   alert("c")
-    //   $("#attendee-input")
-    //   .closest('.display-table-row')
-    //   .css();
-    // })
-
       // Hide Submit Row
+      $('#user-submit-name, #user-submit-email').css('display', 'none');
+      $('#attendee-form-submit-button').text('Submit Edit').css('float', 'right');
           $("#attendee-input")
             .closest('.display-table-row')
             .css('display', 'none');
+      // Add New Text
+      $('#attendee-input').append('Edit Your Response');
+      
+
 
       // Add new Row With Attendee
-
           const newRow = {};
 
           newAttendee.serializeArray().forEach(elem => {
@@ -171,12 +168,13 @@ $(() => {
 
   getNameAndRender();
 
+  // When EDIT clicked hide EDIT button
   $("#form-section-table").on('click', '#editBtn', function() {
     $("#attendee-input")
       .closest('.display-table-row')
       .css('display', '');
-
-  })
+      $('#editBtn').css('display', 'none');
+  });
             
 });
 
