@@ -189,11 +189,11 @@ router.post("/api/v1/events/:hash/attendees", (req, res) => {
         return Promise.all([
           attendeeID,
           eventHelper(knex)
-          .createUserResponses(attendeeResponses)
+            .createUserResponses(attendeeResponses)
         ]);
       })
       .then(([attendeeID, responses]) => {
-        res.status(201).send({id: attendeeID[0]});
+        res.status(201).send({ id: attendeeID[0] });
       })
       .catch(err => {
         console.log(err);
@@ -204,13 +204,45 @@ router.post("/api/v1/events/:hash/attendees", (req, res) => {
 
 // alter current session attendee
 router.put("/api/v1/events/:hash/attendees/:id", (req, res) => {
-  let attendeeName = req.body.attendeeName;
-  let attendeeEventDatesResponse = req.body.attendeeEventDatesResponse;
+  const eventID = req.params.hash,
+    attendeeID = req.params.id,
+    attendeeResponses = req.body.responses;
 
-  if (!attendeeEventDatesResponse) {
-    attendeeEventDatesResponse = false;
-  }
-  res.sendStatus(200);
+  const yesDateOptions = (attendeeResponses
+    ? attendeeResponses.reduce((obj, item) => (obj[item.name] = item.value, obj), {})
+    : {});
+
+  eventHelper(knex).getEventDateOptions(eventID)
+    .then(eventdateOpts => {
+      const responses = eventdateOpts.map(dateOpt => {
+        if (yesDateOptions[dateOpt.id]) {
+          return {
+            id: Number(dateOpt.id),
+            response: true
+          }
+        }
+
+        return {
+          id: Number(dateOpt.id),
+          response: false
+        }
+      });
+
+      const updateAttendeeResponses = {
+        attendeeID: attendeeID,
+        responses: responses
+      };
+
+      return eventHelper(knex)
+        .updateEventAttendeeResponses(updateAttendeeResponses);
+    })
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch(err => {
+      console.log(err);
+      res.sendStatus(500);
+    });
 });
 
 
