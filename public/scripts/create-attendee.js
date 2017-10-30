@@ -24,6 +24,7 @@ $(() => {
   }
   
 
+  // Add New User Route
   function getNameAndRender(form) {
 
     const routeHash = form.attr("data-hash");
@@ -40,29 +41,24 @@ $(() => {
         // grab attendee currently on page
         currentUserID = attendee.id; // 
 
-        // Make Edit Button
+        // make edit button
         $('<input id="editBtn" class="btn btn-primary btn-sm"></input>').attr({'type': 'button'}).val("Edit Your Entry").click(function(){
         }).appendTo($('th.proposal-display-table-headers'));
 
-        // Hide Submit Row
+        // hide submit row
         $('#user-submit-name, #user-submit-email')
           .css('display', 'none');
 
-        // Change button text & position
+        // morph submit button text & position
         $('#attendee-form-submit-button')
           .text('Submit Edit')
           .css('float', 'right');
 
-        // hide User Input row
+        // hide user input row
         $("#attendee-input")
           .closest('.display-table-row')
           .css('display', 'none');
 
-        // // Add New Text
-        // $('#attendee-input').append(`Edit Your Response ${currentUserOnPage}`);   // Add text to next to Edit Submit Btn
-
-
-        // Add new Row With Attendee
         const newRow = {};
 
         newAttendee.serializeArray().forEach(elem => {
@@ -79,15 +75,14 @@ $(() => {
         const attendeeFullResponses = newAttendee.serializeArray();
         const attendeeCheckboxAnswers = attendeeFullResponses.slice(2, attendeeFullResponses.length)
 
-        // grab current page user submitted name 
+        // grab current page user submitted name push name to global scope
         const currentUser = attendeeFullResponses[0].value;
         currentUserOnPage = currentUser;
-        console.log(currentUserOnPage);
 
-        // Add New Text
-        $('#attendee-input').append(`${currentUserOnPage}`);   // Add text to next to Edit Submit Btn
-        
+        // add user name to cell
+        $('#attendee-input').append(`${currentUserOnPage}`); 
 
+        // convert array of objects to object
         const yesDateOptions = (attendeeCheckboxAnswers
           ? attendeeCheckboxAnswers.reduce((obj, item) => (obj[item.name] = item.value, obj), {})
           : {});
@@ -106,25 +101,30 @@ $(() => {
           );
         }
 
+        // store new row for adding user
         const currentUserRow = $("<tr>").addClass("display-table-row")
           .append(name);
 
+        // grab cells of row
         const eventRows = $('thead > tr').children();
         const eventDateOptions = eventRows.slice(1, eventRows.length);
 
+        // add current user to a new row
         eventDateOptions.each(function(index, elem) {
           const answer = yesDateOptions[$(elem).data('id')];
           currentUserRow.append(response(!!answer));
         });
 
-        $("tbody").append(currentUserRow); // add current user attendee to row
+        // add current user attendee to row
+        $("tbody").append(currentUserRow); 
 
-
-
-        editFlag = true;  // change to edit user flag
+        // change flag, takes current user on page to modify route
+        editFlag = true;  
     });
   }
 
+
+  // Modify User Route
   function getNameAndEditUser(form) {
 
     const routeHash = form.attr("data-hash");
@@ -147,18 +147,13 @@ $(() => {
         $("tr").last().css( "display", "none" );
 
         
-        // // Add new Row With Attendee
+        // add new row with attendee
         const newRow = {};
 
         // add attendee responses per date
         const attendeeFullResponses = newAttendee .serializeArray();
         const attendeeCheckboxAnswers = attendeeFullResponses.slice(2, attendeeFullResponses.length);
 
-        // // grab current page user submitted name 
-        // const currentUser = attendeeFullResponses[0].value;
-        // currentUserOnPage = currentUser;
-        // console.log(currentUserOnPage);
-        
         newAttendee .serializeArray().forEach(elem => {
           if (elem.name === "attendeeName") {
             newRow["attendeeName"] = elem.value;
@@ -187,6 +182,7 @@ $(() => {
           );
         }
 
+         // add user name to cell
         const currentUserRow = $("<tr>").addClass("display-table-row")
           .append(name);
 
@@ -203,6 +199,7 @@ $(() => {
       });  // end of done
   } // end of function
 
+  // Choose Flag Route Logic
   $('form').on('submit', function(event) {
     event.preventDefault();
 
@@ -216,4 +213,3 @@ $(() => {
 
   }); // end edit
 }); // end ready
-
