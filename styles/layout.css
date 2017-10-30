@@ -21,8 +21,11 @@ body {
     -webkit-stroke-color: #FFFFFF;
     -webkit-fill-color: #FFFFFF;
     text-shadow: 1px 0px 20px #69DDFF; }
+  body .my-4 {
+    padding-bottom: 45px; }
   body h4 {
-    font-size: 1.4em; }
+    font-size: 1.4em;
+    margin-bottom: 15px; }
   body form.form-group.row {
     padding: 10px 50px; }
 @keyframes shake {
@@ -98,7 +101,7 @@ body {
   body #see-event:hover {
     background-color: #9B5094; }
   body .jumbotron {
-    background-color: #EEE; }
+    background-color: white; }
   body .lead {
     padding-bottom: 40px; }
   body #create-schoodle {
