@@ -203,13 +203,14 @@ router.post("/api/v1/events/:hash/attendees", (req, res) => {
 });
 
 // alter current session attendee
-router.put("api/v1/events/:hash/attendees/:id", (req, res) => {
-  const attendeeName = request.body.attendeeName.trim();
-  const attendeeEventDatesResponse = request.body.attendeeEventDatesResponse;
+router.put("/api/v1/events/:hash/attendees/:id", (req, res) => {
+  let attendeeName = req.body.attendeeName;
+  let attendeeEventDatesResponse = req.body.attendeeEventDatesResponse;
 
   if (!attendeeEventDatesResponse) {
     attendeeEventDatesResponse = false;
   }
+  res.sendStatus(200);
 });
 
 

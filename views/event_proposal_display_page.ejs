@@ -49,7 +49,7 @@
           <% }) %>
         </thead>
         <tbody>
-        <form class="form-group row" method="POST" action="/api/v1/events/<%= eventID %>/attendees">
+        <form class="form-group row" method="POST" data-hash="<%= eventID %>" action="/api/v1/events/<%= eventID %>/attendees">
           <tr class="display-table-row">
             <td id="attendee-input">
               <input type="text" name="attendeeName" placeholder="Name: " required="required" maxlength="64" id="user-submit-name">

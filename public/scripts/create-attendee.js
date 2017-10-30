@@ -1,6 +1,7 @@
 $(() => {
 
   let editFlag = false;
+  let currentUserID;
 
   function buildAttendeeResponses(array) {
     return {
@@ -12,7 +13,8 @@ $(() => {
 
   function getNameAndRender(form) {
 
-    const route = form.attr("action");
+    const routeHash = form.attr("data-hash");
+    const route = `/api/v1/events/${routeHash}/attendees`;
     const newAttendee = form;
 
     $.ajax({
@@ -20,8 +22,8 @@ $(() => {
       url: route,
       data: buildAttendeeResponses(newAttendee.serializeArray())
     })
-      .done(() => {
-
+      .done((attendee) => {
+        currentUserID = attendee.id;  // grab attendee currently on page
         // Make Edit Button
         $('<input id="editBtn" class="btn btn-primary btn-lg"></input>').attr({'type': 'button'}).val("Edit Your Entry").click(function(){
         }).appendTo($('th.proposal-display-table-headers'));
@@ -72,14 +74,14 @@ $(() => {
         }
 
         const row = $("<tr>").addClass("display-table-row")
-          .append(name)
+          .append(name);
 
         const eventRows = $('thead > tr').children();
         const eventDateOptions = eventRows.slice(1, eventRows.length);
 
         eventDateOptions.each(function(index, elem) {
           const answer = yesDateOptions[$(elem).data('id')];
-          row.append(response(!!answer))
+          row.append(response(!!answer));
         });
 
         $("tbody").append(row);
@@ -89,8 +91,19 @@ $(() => {
 
   function getNameAndEditUser(form) {
 
-  }
+    const routeHash = form.attr("data-hash");
+    const route = `/api/v1/events/${routeHash}/attendees/${currentUserID}`;
+    const editAttendee = form;
 
+    $.ajax({
+      method: 'PUT',
+      url: route,
+      data: buildAttendeeResponses(editAttendee.serializeArray())
+    })
+      .done(() => {
+        console.log('PUT call Successful!')
+      });
+  }
 
   $('form').on('submit', function(event) {
     event.preventDefault();
