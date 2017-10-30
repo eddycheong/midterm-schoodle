@@ -134,7 +134,7 @@ form.form-group.row {
     background-color: #9B5094
   }
   .jumbotron {
-    background-color: #EEE
+    background-color: #FFFFFF
   }
   .lead {
     padding-bottom: 40px;
@@ -211,6 +211,16 @@ form.form-group.row {
   }
   #display-page-content {
     padding-bottom: 80px;
+  }
+  table.table-bordered{
+    border:1px solid #A9A9A9;
+    margin-top:20px;
+  }
+  table.table-bordered > thead > tr > th{
+    border:1px solid #A9A9A9;
+  }
+  table.table-bordered > tbody > tr > td{
+    border:1px solid #A9A9A9;
   }
 }
 
