@@ -25,7 +25,7 @@ $(() => {
       .done((attendee) => {
         currentUserID = attendee.id;  // grab attendee currently on page
         // Make Edit Button
-        $('<input id="editBtn" class="btn btn-primary btn-lg"></input>').attr({'type': 'button'}).val("Edit Your Entry").click(function(){
+        $('<input id="editBtn" class="btn btn-primary btn-sm"></input>').attr({'type': 'button'}).val("Edit Your Entry").click(function(){
         }).appendTo($('th.proposal-display-table-headers'));
 
         // Hide Submit Row
