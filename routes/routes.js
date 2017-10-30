@@ -11,35 +11,32 @@ const knexConfig = require("../knexfile");
 const knex = require("knex")(knexConfig[ENV]);
 const shortid = require('shortid');
 
+
+// Helper Function
 function makeHash() {
   return shortid.generate() + shortid.generate();
 }
 
-// // DISPLAY PAGES
-
-// home page
+// GET home page
 router.get("/", (req, res) => {
   res.render("index");
 });
 
-// event proposal form page
+// GET event proposal form page
 router.get("/create", (req, res) => {
   res.render("event_proposal_form_page");
 });
 
-// event link share page
+// GET event link share page
 router.get("/events/:hash/share", (req, res) => {
 
-  // First, validate if hash is valid, if not, send error
   res.locals.hash = req.params.hash;
   res.locals.host = req.get('host');
-
-  console.log(req.get('host'));
 
   res.render("share_link_page");
 });
 
-// event proposal display page
+// GET event proposal display page
 router.get("/events/:hash", (req, res) => {
   const eventID = req.params.hash,
     db = eventHelper(knex);
@@ -89,9 +86,7 @@ router.get("/events/:hash", (req, res) => {
 });
 
 
-// // POST FORM
-
-// event proposal form page
+// POST event proposal form page
 router.post("/events", (req, res) => {
   const urlHash = makeHash();
 
@@ -127,10 +122,8 @@ router.post("/events", (req, res) => {
     });
 });
 
-// // DATABASE PUT/POST QUERIES
 
-
-// add a new attendee their responses
+// POST add new attendee with their response
 router.post("/api/v1/events/:hash/attendees", (req, res) => {
   const eventID = req.params.hash;
 
@@ -196,7 +189,7 @@ router.post("/api/v1/events/:hash/attendees", (req, res) => {
   }
 });
 
-// alter current session attendee
+// PUT alter current session attendee
 router.put("/api/v1/events/:hash/attendees/:id", (req, res) => {
   const eventID = req.params.hash,
     attendeeID = req.params.id,
@@ -238,6 +231,5 @@ router.put("/api/v1/events/:hash/attendees/:id", (req, res) => {
       res.sendStatus(500);
     });
 });
-
 
 module.exports = router;
