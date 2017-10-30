@@ -85,7 +85,7 @@ $(() => {
         console.log(currentUserOnPage);
 
         // Add New Text
-        $('#attendee-input').append(`Edit Your Response ${currentUserOnPage}`);   // Add text to next to Edit Submit Btn
+        $('#attendee-input').append(`${currentUserOnPage}`);   // Add text to next to Edit Submit Btn
         
 
         const yesDateOptions = (attendeeCheckboxAnswers
