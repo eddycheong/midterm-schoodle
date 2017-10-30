@@ -186,11 +186,14 @@ router.post("/api/v1/events/:hash/attendees", (req, res) => {
           responses: responses
         }
 
-        return eventHelper(knex)
-          .createUserResponses(attendeeResponses);
+        return Promise.all([
+          attendeeID,
+          eventHelper(knex)
+          .createUserResponses(attendeeResponses)
+        ]);
       })
-      .then(() => {
-        res.sendStatus(201);
+      .then(([attendeeID, responses]) => {
+        res.status(201).send({id: attendeeID[0]});
       })
       .catch(err => {
         console.log(err);
