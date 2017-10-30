@@ -31,7 +31,7 @@
       $('#document').ready(function(e){
         console.log("document loaded");
         $(function () {
-          $("#datepicker").datepicker({ 
+          $("#datepicker").datepicker({
                 todayHighlight: true,
                 multidate: true,
                 format: 'yyyy/mm/dd'
@@ -55,7 +55,7 @@
               const email = result.email;
               const proposedEventName = result.proposedEventName;
               const proposedEventDates = result.proposedEventDates;
-              const proposedEventDescription = result.proposedEventDescription;  
+              const proposedEventDescription = result.proposedEventDescription;
 
               console.log("I am the result: " + organizerName, email, proposedEventName, proposedEventDates, proposedEventDescription);
               window.location = `http://localhost:8080/events/${urlHash}/share`;   //for redirection
@@ -79,7 +79,7 @@
         //       const email = result.email;
         //       const proposedEventName = result.proposedEventName;
         //       const proposedEventDates = result.proposedEventDates;
-        //       const proposedEventDescription = result.proposedEventDescription;  
+        //       const proposedEventDescription = result.proposedEventDescription;
 
         //       console.log("I am the result: " + organizerName, email, proposedEventName, proposedEventDates, proposedEventDescription);
         //       window.location = `http://localhost:8080/events/${urlHash}/share`;   //for redirection
@@ -101,18 +101,19 @@
     </header>
 
     <main>
-      <center class="form">
-        <h2>Provide Your Event Details!</h2>
-        <form class="eventDetails">
-          <div>
-            <label for='title'>Title:</label><br>
-              <input type="text" name="proposedEventName" id="d-pollTitle" placeholder="My best party..." required="required" maxlength="64">
-          </div>
+      <section id="event-form-container">
+        <center class="form">
+          <h2>Provide Your Event Details!</h2>
+          <form class="eventDetails">
+            <div>
+              <label for='title'>Title:</label><br>
+                <input type="text" name="proposedEventName" id="d-pollTitle" placeholder="My best party..." required="required" maxlength="64">
+            </div>
 
-          <div>
-            <label for='description'>Description:</label><br>
-              <textarea name="proposedEventDescription" id="d-pollDescription" rows="1" cols="25" placeholder="Balloons provided!" maxlength="512"></textarea>
-          </div>
+            <div>
+              <label for='description'>Description:</label><br>
+                <textarea name="proposedEventDescription" id="d-pollDescription" rows="1" cols="25" placeholder="Balloons provided!" maxlength="512"></textarea>
+            </div>
 
             <!-- <label for='date'>Pick your possible dates!</label><br>
               <input name='proposedEventDates' id='date' type='date' data-provide="datepicker"><br><br> -->
@@ -134,7 +135,7 @@
           <button type="button" class="btn btn-primary" id="SubmitBtn">Submit</button>
         </form>
         </center>
-
+      </section>
     </main>
 
     <footer>
