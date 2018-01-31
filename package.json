@@ -9,6 +9,9 @@
     "local": "./node_modules/.bin/nodemon --ignore public/",
     "knex": "./node_modules/.bin/knex"
   },
+  "engines": {
+    "node": ">=6.9.5"
+  },
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
